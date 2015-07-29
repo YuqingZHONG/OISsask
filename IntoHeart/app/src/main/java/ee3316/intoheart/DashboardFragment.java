@@ -42,9 +42,6 @@ import ee3316.intoheart.Data.InstantHeartRateStore;
 import ee3316.intoheart.Data.UserStore;
 import ee3316.intoheart.HTTP.JCallback;
 
-/**
- * Created by aahung on 3/7/15.
- */
 public class DashboardFragment extends Fragment {
 
     LineGraphSeries<DataPoint> series;
