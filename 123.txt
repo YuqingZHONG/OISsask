@@ -1,0 +1,11 @@
+Sleep apnea is a universal issue when people fall asleep, it is caused by airway's closing. 
+The most general feature is snoring. 
+Of course it could be very dangerous for people because they are unconscious about it.
+Our aim is develop a mobile app to save people from sleep apnea.
+
+We found some reference on Google Scholar and this paper is a rich representitive one which 
+shows sleep apnea could be implied by heart rate. The researcher collect some information of 
+ 15 consecutive patients aged around 53 years in the duration when they are detected in sleep apnea,
+AHI and delta HRA are two instructive index. 
+AHI is apnoea hypoponea index, means the number of times that sleep aponea happens in an hour.
+delta HRA is the difference of heart rate during aponea in non-rapid eye movement sleep.
