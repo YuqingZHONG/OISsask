@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Lily\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-bf7c9ff573661133584e3bae595c7c4e3aa5515c.jar" />
+    </item>
+    <item
+        jar="C:\软件\Andriod studio\Andriod SDK\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-bc3709d6978b91043b5694b5f88a2123ce75ea0b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\classes-fe69ec74f5e84e63eb85e9a813c6c1833206e6e7.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\classes-b0b214a372530e551980ede6fcf0005be4a6c141.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-160d4c0508fc4c067d46070f95654660382a8b90.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\exploded-aar\com.jjoe64\graphview\4.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ae24ad61a573cd1faf8261f5ec6d8f0cb58ddaad">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\classes-9ddaba16c5e5e821c036e2463c62a44f2a809cbb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\gson-2.3.1-17eddf0ce3f096e339e3b8f8228ed8e85ff21633.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\6.1.0\63735f48b82bcd24cdd33821342428252eb1ca5a\butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\butterknife-6.1.0-9741dfa3c8085a711e27539824ba73602ba86278.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\Lily\AndroidStudioProjects\ih\IntoHeart\app\build\intermediates\pre-dexed\debug\classes-c671f560866de9febfdb8fe974cebc582dbe2ce3.jar" />
+    </item>
+
+</items>
