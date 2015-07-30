@@ -136,15 +136,19 @@ public class DashboardFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         switch (item.getItemId()) {
-            case R.id.menu_exercise:
+            case R.id.menu_sleep:
                 // open the voice
+
                 setSleeping(true);
+
                 ((MainActivity) getActivity()).createSleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
                 break;
             case R.id.menu_normal:
+
                 setSleeping(false);
+
                 ((MainActivity) getActivity()).destroySleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
