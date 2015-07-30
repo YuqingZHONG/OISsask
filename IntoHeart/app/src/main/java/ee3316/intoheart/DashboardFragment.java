@@ -120,11 +120,11 @@ public class DashboardFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         getActivity().getMenuInflater().inflate(R.menu.dashboard, menu);
         if (getSleeping()) {
-            menu.findItem(R.id.menu_exercise).setVisible(false);
+            menu.findItem(R.id.menu_sleep).setVisible(false);
             menu.findItem(R.id.menu_normal).setVisible(true);
         } else {
             menu.findItem(R.id.menu_normal).setVisible(false);
-            menu.findItem(R.id.menu_exercise).setVisible(true);
+            menu.findItem(R.id.menu_sleep).setVisible(true);
         }
         setVisibility();
     }
