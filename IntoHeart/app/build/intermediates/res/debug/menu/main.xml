@@ -6,4 +6,4 @@
     <item android:id="@+id/action_emergency_on" android:title="emergency on"></item>
     <item android:id="@+id/action_emergency_off" android:title="emergency off"></item>
 </menu>
-<!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/menu/main.xml -->
+<!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/menu/main.xml -->
