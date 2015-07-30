@@ -5,7 +5,7 @@
 
     <item android:id="@+id/menu_normal" android:title="@string/menu_normal"
         app:showAsAction="withText|always" />
-    <item android:id="@+id/menu_exercise" android:title="@string/menu_exercise"
+    <item android:id="@+id/menu_sleep" android:title="Sleep mode"
         app:showAsAction="withText|always" />
 
 </menu>

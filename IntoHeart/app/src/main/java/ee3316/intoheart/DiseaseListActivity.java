@@ -3,16 +3,11 @@ package ee3316.intoheart;
 /**
  * Created by Vivian on 9/4/15.
  */
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 public class DiseaseListActivity extends ListActivity {
@@ -39,7 +34,7 @@ public class DiseaseListActivity extends ListActivity {
         String title = diseaseNames[position];
         String url = diseaseURLs[position];
         Intent intent = new Intent();
-        intent.setClass(getApplicationContext(), DiseaseDetailActivity.class);
+        intent.setClass(getApplicationContext(), ApneaDetailActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("url", url);
         startActivity(intent);

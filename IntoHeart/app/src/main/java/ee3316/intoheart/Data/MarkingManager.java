@@ -30,7 +30,7 @@ public class MarkingManager {
         return tableAge;
     }
 
-    public void evaluateExercise(int age, int ave) {
+    public void evaluateApnea(int age, int ave) {
         int tableAge = matchTableAge(age);
         if (ave >= targetHRs.get(tableAge)[0])
             if (ave >= targetHRs.get(tableAge)[2])
@@ -57,7 +57,7 @@ public class MarkingManager {
         return (int) (mark[0] * 0.3 + mark[1] * 0.5 + mark[2] * 0.2);
     }
 
-    public int getExerciseMark() {
+    public int getApneaMark() {
         return (int) mark[0];
     }
     public int getRestMark(){
