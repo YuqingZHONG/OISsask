@@ -11,9 +11,6 @@ import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.Engine;
 import android.speech.tts.TextToSpeech.OnInitListener;
-import android.view.Menu;
-import android.widget.Button;
-import android.widget.ImageView;
 
 public class SpeechActivity extends Activity {
 
@@ -27,7 +24,7 @@ public class SpeechActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_exercise_main);
+        setContentView(R.layout.fragment_sleep_main);
         initTextToSpeech();
     }
 

@@ -38,9 +38,7 @@ import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.UIComponent.SimpleAlertController;
 
-/**
- * Created by aahung on 3/7/15.
- */
+
 public class RankingFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
