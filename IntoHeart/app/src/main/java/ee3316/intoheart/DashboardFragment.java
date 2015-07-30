@@ -68,19 +68,19 @@ public class DashboardFragment extends Fragment {
     @InjectView(R.id.heart)
     ImageView heart;
 
-    private boolean getExercising() {
+    private boolean getSleeping() {
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity == null) return false;
-        return mainActivity.exercising;
+        return mainActivity.sleeping;
     }
 
-    private void setExercising(boolean exercising) {
+    private void setsleeping(boolean sleeping) {
         MainActivity mainActivity = (MainActivity) getActivity();
-        if (mainActivity != null) mainActivity.exercising = exercising;
+        if (mainActivity != null) mainActivity.sleeping = sleeping;
     }
 
     private void setVisibility() {
-        if (getExercising()) {
+        if (getSleeping()) {
             heart.setVisibility(View.GONE);
             sportsMan.setVisibility(View.VISIBLE);
         } else {
@@ -119,7 +119,7 @@ public class DashboardFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         getActivity().getMenuInflater().inflate(R.menu.dashboard, menu);
-        if (getExercising()) {
+        if (getSleeping()) {
             menu.findItem(R.id.menu_exercise).setVisible(false);
             menu.findItem(R.id.menu_normal).setVisible(true);
         } else {
@@ -138,13 +138,13 @@ public class DashboardFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.menu_exercise:
                 // open the voice
-                setExercising(true);
+                setsleeping(true);
                 ((MainActivity) getActivity()).createExerciseMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
                 break;
             case R.id.menu_normal:
-                setExercising(false);
+                setsleeping(false);
                 ((MainActivity) getActivity()).destroyExerciseMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
@@ -186,7 +186,7 @@ public class DashboardFragment extends Fragment {
             graph.getViewport().setMaxX(currentDataSet[currentDataSet.length - 1].getX());
         }
         graph.getViewport().setYAxisBoundsManual(true);
-        if (getExercising()) {
+        if (getSleeping()) {
             graph.getViewport().setMinY(50);
             graph.getViewport().setMaxY(210);
         } else {

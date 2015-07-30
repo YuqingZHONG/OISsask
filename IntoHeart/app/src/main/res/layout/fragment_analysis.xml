@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="200dp">
+        android:layout_height="180dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,7 +61,6 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="98"
                 android:id="@+id/textAve"
-                android:layout_marginTop="30dip"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff"
                 android:textSize="90sp"
@@ -111,8 +110,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_height="wrap_content">
 
             <TextView
                 style="@style/MyText"
@@ -237,8 +235,7 @@
             android:layout_width="198dp"
             android:layout_height="wrap_content"
             android:text="What is sleep apnea?"
-            android:id="@+id/view_detail_fast_button2"
-            android:layout_marginTop="30dp"
+            android:id="@+id/sleep_apnea"
             android:background="@drawable/button_default"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

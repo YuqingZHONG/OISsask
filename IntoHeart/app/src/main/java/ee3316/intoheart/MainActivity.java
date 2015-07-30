@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity
         sectionTitles.add("Dashboard");
         sectionTitles.add("Analysis");
         sectionTitles.add("Sensors");
-        sectionTitles.add("Ranking");
+
         sectionTitles.add("My Info");
         sectionTitles.add("Lifestyle");
 
@@ -146,10 +146,10 @@ public class MainActivity extends ActionBarActivity
         onConnectionStateChanged = null;
         unregisterReceiver(sensorConnectionManager.mGattUpdateReceiver);
 
-        // remove the exercise monitor
-        if (exerciseMonitor != null) {
-            exerciseMonitor.end();
-            exerciseMonitor = null;
+        // remove the Sleep monitor
+        if (SleepMonitor != null) {
+            SleepMonitor.end();
+            SleepMonitor = null;
         }
     }
 
@@ -171,13 +171,11 @@ public class MainActivity extends ActionBarActivity
                 fragment = SensorsFragment.newInstance(position + 1);
                 break;
 
+
             case 3:
-                fragment = RankingFragment.newInstance(position + 1);
-                break;
-            case 4:
                 fragment = UserinfoFragment.newInstance(position + 1);
                 break;
-            case 5:
+            case 4:
                 fragment = LifestyleFragment.newInstance(position + 1);
                 break;
 
@@ -253,12 +251,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     EmergencyMonitor emergencyMonitor;
-    public boolean exercising = false;
+    public boolean sleeping = false;
 
     class EmergencyMonitor {
         private int EMERGENT_MIN_HR = 70;
         private int EMERGENT_MAX_HR = 90;
-        private int EMERGENT_MAX_HR_EXERCISING = 200;
+        private int EMERGENT_MAX_HR_SLEEPING = 200;
 
         private boolean shouldCall = false;
 
@@ -271,7 +269,7 @@ public class MainActivity extends ActionBarActivity
                     boolean tooHigh = true;
                     for (int i = getInstantHeartRateStore().n - 1;
                          i >= getInstantHeartRateStore().n - 10; --i) {
-                        int max = (exercising)? EMERGENT_MAX_HR_EXERCISING : EMERGENT_MAX_HR;
+                        int max = (sleeping)? EMERGENT_MAX_HR_SLEEPING : EMERGENT_MAX_HR;
                         if (getInstantHeartRateStore().hrs[i].getY() >= EMERGENT_MIN_HR
                                 && getInstantHeartRateStore().hrs[i].getY() <= max) {
                             tooHigh = false;
@@ -302,15 +300,15 @@ public class MainActivity extends ActionBarActivity
         return ((IHApplication) getApplication()).instantHeartRateStore;
     }
 
-    ExerciseMonitor exerciseMonitor;
+    SleepMonitor SleepMonitor;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (exercising) {
+        if (sleeping) {
             if (requestCode == TTS_DATA_CHECK) {
                 if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-                    exerciseMonitor.start();
+                    SleepMonitor.start();
                 } else {
                     Intent installAllVoice = new Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                     startActivity(installAllVoice);
@@ -321,19 +319,19 @@ public class MainActivity extends ActionBarActivity
 
     private static int TTS_DATA_CHECK = 1;
 
-    public void createExerciseMonitor() {
-        exerciseMonitor = new ExerciseMonitor();
+    public void createSleepMonitor() {
+        SleepMonitor = new SleepMonitor();
     }
 
-    public void destroyExerciseMonitor() {
-        if (exerciseMonitor != null) {
-            exerciseMonitor.end();
-            exerciseMonitor = null;
+    public void destroySleepMonitor() {
+        if (SleepMonitor != null) {
+            SleepMonitor.end();
+            SleepMonitor = null;
         }
     }
 
-    class ExerciseMonitor {
-        private final int EXERCISE_MAX_HR = 110;
+    class SleepMonitor {
+        private final int SLEEP_MAX_HR = 110;
 
 
         private TextToSpeech tts = null;
@@ -342,7 +340,7 @@ public class MainActivity extends ActionBarActivity
         private boolean ttsIsInit = false;
 
 
-        public ExerciseMonitor() {
+        public SleepMonitor() {
             initTextToSpeech();
         }
 
@@ -377,7 +375,7 @@ public class MainActivity extends ActionBarActivity
 //                                    speaking = false;
 //                                }
 //                            });
-                            exerciseMonitor.welcome();
+                            SleepMonitor.welcome();
                         }
                     }
                 }
@@ -390,7 +388,7 @@ public class MainActivity extends ActionBarActivity
                     boolean tooHigh = true;
                     for (int i = getInstantHeartRateStore().n - 1;
                          i >= getInstantHeartRateStore().n - 10; --i) {
-                        if (getInstantHeartRateStore().hrs[i].getY() < EXERCISE_MAX_HR) {
+                        if (getInstantHeartRateStore().hrs[i].getY() < SLEEP_MAX_HR) {
                             tooHigh = false;
                             break;
                         }
@@ -405,14 +403,14 @@ public class MainActivity extends ActionBarActivity
         }
 
         public void welcome() {
-            String text = String.format("Hey! You are now in exercise mode, "
-                    + "I will tell you when your heart rate is too high, "
-                    + "current threshold is %s beats per minute.", EXERCISE_MAX_HR);
+            String text = String.format("You are now in sleep mode, "
+                    + "I will wake you up when you are in bad sleep apnea, "
+                    + "good night.", SLEEP_MAX_HR);
             speak(text);
         }
 
         public void alert() {
-            speak("Please stop,your heart rate is too high");
+            speak("Please wake up, you are in bad sleep apnea");
         }
 
         public void speak(String text) {
