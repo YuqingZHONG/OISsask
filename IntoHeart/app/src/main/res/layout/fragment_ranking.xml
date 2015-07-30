@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/exercise_score"
+                android:id="@+id/apnea_score"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:paddingLeft="33dp"

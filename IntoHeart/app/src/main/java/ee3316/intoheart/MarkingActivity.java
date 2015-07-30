@@ -31,7 +31,7 @@ public class MarkingActivity extends Activity{
     public void onResume() {
         super.onResume();
         heart_rate_score.setText(String.valueOf(userStore.markingManager.getRestMark()));
-        exercise_score.setText(String.valueOf(userStore.markingManager.getExerciseMark()));
+        exercise_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
         life_style_score.setText(String.valueOf(userStore.markingManager.getLifeStyleMark()));
 
     }

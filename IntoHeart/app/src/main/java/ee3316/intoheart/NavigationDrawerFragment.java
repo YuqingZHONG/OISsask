@@ -343,6 +343,10 @@ public class NavigationDrawerFragment extends Fragment {
                    break;
                case "Sensors": viewHolder.icon.setImageResource(R.drawable.sensor);
                    break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> Lily730
                case "My Info": viewHolder.icon.setImageResource(R.drawable.user);
                    break;
                case "Lifestyle": viewHolder.icon.setImageResource(R.drawable.lifestyle);
