@@ -249,12 +249,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     EmergencyMonitor emergencyMonitor;
-    public boolean exercising = false;
+    public boolean sleeping = false;
 
     class EmergencyMonitor {
         private int EMERGENT_MIN_HR = 70;
         private int EMERGENT_MAX_HR = 90;
-        private int EMERGENT_MAX_HR_EXERCISING = 200;
+        private int EMERGENT_MAX_HR_sleeping = 200;
 
         private boolean shouldCall = false;
 
@@ -267,7 +267,7 @@ public class MainActivity extends ActionBarActivity
                     boolean tooHigh = true;
                     for (int i = getInstantHeartRateStore().n - 1;
                          i >= getInstantHeartRateStore().n - 10; --i) {
-                        int max = (exercising)? EMERGENT_MAX_HR_EXERCISING : EMERGENT_MAX_HR;
+                        int max = (sleeping)? EMERGENT_MAX_HR_sleeping : EMERGENT_MAX_HR;
                         if (getInstantHeartRateStore().hrs[i].getY() >= EMERGENT_MIN_HR
                                 && getInstantHeartRateStore().hrs[i].getY() <= max) {
                             tooHigh = false;
@@ -303,7 +303,7 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (exercising) {
+        if (sleeping) {
             if (requestCode == TTS_DATA_CHECK) {
                 if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                     SleepMonitor.start();

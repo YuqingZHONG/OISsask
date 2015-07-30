@@ -139,13 +139,13 @@ public class DashboardFragment extends Fragment {
             case R.id.menu_exercise:
                 // open the voice
                 setsleeping(true);
-                ((MainActivity) getActivity()).createExerciseMonitor();
+                ((MainActivity) getActivity()).createSleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
                 break;
             case R.id.menu_normal:
                 setsleeping(false);
-                ((MainActivity) getActivity()).destroyExerciseMonitor();
+                ((MainActivity) getActivity()).destroySleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
                 break;
