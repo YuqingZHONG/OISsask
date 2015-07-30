@@ -99,7 +99,120 @@
                 android:textColor="#ffffff"
                 style="@style/MyText"/>
         </LinearLayout>
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="178dp"
+        android:background="#20ffffff"
+        android:padding="10dip" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Your Score:"
+                android:id="@+id/textView12"
+                android:textColor="#ffffff"
+                android:textSize="40dp" />
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView15"
+                android:textColor="#ffffff"
+                android:textSize="40dp"
+                android:text="100"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heart rate score:"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView16"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="20dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apnea score:"
+                android:id="@+id/textView17"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView18"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="33dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Life style score:"
+                android:id="@+id/textView19"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                style="@style/MyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView22"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="29dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -113,18 +226,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Your heart is in good condition!"
+            android:text="You never have sleep apnea!"
             android:id="@+id/result_text"
             android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            style="@style/MyText"/>
+            style="@style/MyText"
+            android:layout_marginRight="50dp"
+            android:textSize="30dp"
+            android:layout_marginLeft="20dp" />
         <Button
-            android:layout_width="fill_parent"
+            android:layout_width="198dp"
             android:layout_height="wrap_content"
-            android:text="View tachycardia details"
+            android:text="What is sleep apnea?"
             android:id="@+id/view_detail_fast_button2"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_default"
             android:layout_marginLeft="20dp"
@@ -132,87 +245,8 @@
             android:textColor="#ffffff"
             style="@style/MyText"
              />
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="View bradycardia details"
-            android:id="@+id/view_detail_slow_button2"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_default"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#ffffff"
-            style="@style/MyText"
-           />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/disease_slow_block"
-        android:background="#20ffffff">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="You might have bradycardia!"
-            android:id="@+id/textView10"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            style="@style/MyText"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="View details"
-            android:id="@+id/view_detail_slow_button"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:background="#b6bc24"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#ffffff"
-            style="@style/MyText"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/disease_fast_block"
-        android:background="#20ffffff">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="You might have tachycardia!"
-            android:id="@+id/textView11"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            style="@style/MyText"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="View details"
-            android:id="@+id/view_detail_fast_button"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:background="#b6bc24"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textColor="#ffffff"
-            style="@style/MyText"/>
     </LinearLayout>
 
 

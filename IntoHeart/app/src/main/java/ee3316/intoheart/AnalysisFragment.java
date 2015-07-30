@@ -27,6 +27,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import ee3316.intoheart.Data.HeartRateContract;
 import ee3316.intoheart.Data.HeartRateStoreController;
+import ee3316.intoheart.Data.UserStore;
+import ee3316.intoheart.HTTP.Connector;
 
 /**
  * Created by aahung on 3/9/15.
@@ -35,6 +37,8 @@ public class AnalysisFragment extends Fragment {
 
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    UserStore userStore;
+    Connector connector;
 
     public static AnalysisFragment newInstance(int sectionNumber) {
         AnalysisFragment fragment = new AnalysisFragment();
@@ -57,12 +61,30 @@ public class AnalysisFragment extends Fragment {
     @InjectView(R.id.result_text)
     TextView resultText;
 
+
+    @InjectView(R.id.final_score_view)
+    TextView finalScoreView;
+    @InjectView(R.id.heart_rate_score)
+    TextView heart_rate_score;
+    @InjectView(R.id.apnea_score)
+    TextView apnea_score;
+    @InjectView(R.id.life_style_score)
+    TextView life_style_score;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_analysis, container, false);
         setHasOptionsMenu(true);
+        connector = new Connector();
         ButterKnife.inject(this,rootView);
+
+        userStore = new UserStore(getActivity());
+        finalScoreView.setText(String.valueOf(userStore.markingManager.getFinalMark()));
+        heart_rate_score.setText(String.valueOf(userStore.markingManager.getRestMark()));
+        apnea_score.setText(String.valueOf(userStore.markingManager.getExerciseMark()));
+        life_style_score.setText(String.valueOf(userStore.markingManager.getLifeStyleMark()));
+
 
         Button btn_slow=(Button)rootView.findViewById(R.id.view_detail_slow_button);
         btn_slow.setOnClickListener(new View.OnClickListener() {

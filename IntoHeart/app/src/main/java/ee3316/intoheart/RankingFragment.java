@@ -64,8 +64,8 @@ public class RankingFragment extends Fragment {
     TextView finalScoreView;
     @InjectView(R.id.heart_rate_score)
     TextView heart_rate_score;
-    @InjectView(R.id.exercise_score)
-    TextView exercise_score;
+    @InjectView(R.id.apnea_score)
+    TextView apnea_score;
     @InjectView(R.id.life_style_score)
     TextView life_style_score;
 
@@ -81,7 +81,7 @@ public class RankingFragment extends Fragment {
         userStore = new UserStore(getActivity());
         finalScoreView.setText(String.valueOf(userStore.markingManager.getFinalMark()));
         heart_rate_score.setText(String.valueOf(userStore.markingManager.getRestMark()));
-        exercise_score.setText(String.valueOf(userStore.markingManager.getExerciseMark()));
+        apnea_score.setText(String.valueOf(userStore.markingManager.getExerciseMark()));
         life_style_score.setText(String.valueOf(userStore.markingManager.getLifeStyleMark()));
         if (userStore.getLogin()) {
             getRank();
@@ -95,7 +95,7 @@ public class RankingFragment extends Fragment {
                 LayoutInflater inflater = getActivity().getLayoutInflater();
                 final View dialogView = inflater.inflate(R.layout.alertdialog_ranking_detail, null);
                 ((TextView) dialogView.findViewById(R.id.final_score_view)).setText(data[2]);
-                ((TextView) dialogView.findViewById(R.id.exercise_score)).setText(data[3]);
+                ((TextView) dialogView.findViewById(R.id.apnea_score)).setText(data[3]);
                 ((TextView) dialogView.findViewById(R.id.heart_rate_score)).setText(data[4]);
                 ((TextView) dialogView.findViewById(R.id.life_style_score)).setText(data[5]);
                 builder.setView(dialogView)
