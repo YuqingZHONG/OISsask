@@ -49,25 +49,9 @@
             android:name=".RawDataActivity"
             android:label="@string/title_activity_raw_data" >
         </activity>
-        <activity
-<<<<<<< HEAD
-            android:name=".AddFriendActivity"
-            android:label="Add Friends"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
-        </activity>
-        <activity
-            android:name=".ApneaDetailActivity"
-=======
-            android:name=".DiseaseDetailActivity"
->>>>>>> origin/sue
-            android:label="@string/title_activity_disease_detail">
 
-        </activity>
-        <activity
-            android:name=".DiseaseListActivity"
-            android:label="@string/title_activity_disease_list"
-             >
-        </activity>
+
+
         <activity android:name=".SpeechActivity"
             android:label="@string/title_activity_speech">
         </activity>
