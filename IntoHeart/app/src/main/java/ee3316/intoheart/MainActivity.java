@@ -61,7 +61,6 @@ public class MainActivity extends ActionBarActivity
         sectionTitles.add("Dashboard");
         sectionTitles.add("Analysis");
         sectionTitles.add("Sensors");
-
         sectionTitles.add("My Info");
         sectionTitles.add("Lifestyle");
 
@@ -171,7 +170,6 @@ public class MainActivity extends ActionBarActivity
                 fragment = SensorsFragment.newInstance(position + 1);
                 break;
 
-
             case 3:
                 fragment = UserinfoFragment.newInstance(position + 1);
                 break;
@@ -251,12 +249,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     EmergencyMonitor emergencyMonitor;
-    public boolean sleeping = false;
+    public boolean exercising = false;
 
     class EmergencyMonitor {
         private int EMERGENT_MIN_HR = 70;
         private int EMERGENT_MAX_HR = 90;
-        private int EMERGENT_MAX_HR_SLEEPING = 200;
+        private int EMERGENT_MAX_HR_EXERCISING = 200;
 
         private boolean shouldCall = false;
 
@@ -269,7 +267,7 @@ public class MainActivity extends ActionBarActivity
                     boolean tooHigh = true;
                     for (int i = getInstantHeartRateStore().n - 1;
                          i >= getInstantHeartRateStore().n - 10; --i) {
-                        int max = (sleeping)? EMERGENT_MAX_HR_SLEEPING : EMERGENT_MAX_HR;
+                        int max = (exercising)? EMERGENT_MAX_HR_EXERCISING : EMERGENT_MAX_HR;
                         if (getInstantHeartRateStore().hrs[i].getY() >= EMERGENT_MIN_HR
                                 && getInstantHeartRateStore().hrs[i].getY() <= max) {
                             tooHigh = false;
@@ -305,7 +303,7 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (sleeping) {
+        if (exercising) {
             if (requestCode == TTS_DATA_CHECK) {
                 if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                     SleepMonitor.start();
@@ -403,14 +401,14 @@ public class MainActivity extends ActionBarActivity
         }
 
         public void welcome() {
-            String text = String.format("You are now in sleep mode, "
-                    + "I will wake you up when you are in bad sleep apnea, "
-                    + "good night.", SLEEP_MAX_HR);
+            String text = String.format("Hey! You are now in Sleep mode, "
+                    + "I will tell you when your heart rate is too high, "
+                    + "current threshold is %s beats per minute.", SLEEP_MAX_HR);
             speak(text);
         }
 
         public void alert() {
-            speak("Please wake up, you are in bad sleep apnea");
+            speak("Please stop,your heart rate is too high");
         }
 
         public void speak(String text) {

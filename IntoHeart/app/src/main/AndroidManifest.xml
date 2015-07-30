@@ -55,7 +55,7 @@
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
-            android:name=".DiseaseDetailActivity"
+            android:name=".ApneaDetailActivity"
             android:label="@string/title_activity_disease_detail">
 
         </activity>
