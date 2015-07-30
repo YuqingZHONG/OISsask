@@ -74,7 +74,7 @@ public class DashboardFragment extends Fragment {
         return mainActivity.sleeping;
     }
 
-    private void setsleeping(boolean sleeping) {
+    private void setSleeping(boolean sleeping) {
         MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) mainActivity.sleeping = sleeping;
     }
@@ -138,13 +138,13 @@ public class DashboardFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.menu_exercise:
                 // open the voice
-                setsleeping(true);
+                setSleeping(true);
                 ((MainActivity) getActivity()).createSleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
                 break;
             case R.id.menu_normal:
-                setsleeping(false);
+                setSleeping(false);
                 ((MainActivity) getActivity()).destroySleepMonitor();
                 getActivity().invalidateOptionsMenu();
                 reconstructChart();
