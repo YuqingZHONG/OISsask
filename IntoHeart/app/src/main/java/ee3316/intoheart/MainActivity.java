@@ -61,7 +61,6 @@ public class MainActivity extends ActionBarActivity
         sectionTitles.add("Dashboard");
         sectionTitles.add("Analysis");
         sectionTitles.add("Sensors");
-        sectionTitles.add("Ranking");
         sectionTitles.add("My Info");
         sectionTitles.add("Lifestyle");
 
@@ -172,12 +171,9 @@ public class MainActivity extends ActionBarActivity
                 break;
 
             case 3:
-                fragment = RankingFragment.newInstance(position + 1);
-                break;
-            case 4:
                 fragment = UserinfoFragment.newInstance(position + 1);
                 break;
-            case 5:
+            case 4:
                 fragment = LifestyleFragment.newInstance(position + 1);
                 break;
 
