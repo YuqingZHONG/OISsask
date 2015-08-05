@@ -63,8 +63,8 @@ public class DashboardFragment extends Fragment {
     public DashboardFragment() {
 
     }
-    @InjectView(R.id.sports_man)
-    ImageView sportsMan;
+    @InjectView(R.id.sleep)
+    ImageView sleep;
     @InjectView(R.id.heart)
     ImageView heart;
 
@@ -82,10 +82,10 @@ public class DashboardFragment extends Fragment {
     private void setVisibility() {
         if (getSleeping()) {
             heart.setVisibility(View.GONE);
-            sportsMan.setVisibility(View.VISIBLE);
+            sleep.setVisibility(View.VISIBLE);
         } else {
             heart.setVisibility(View.VISIBLE);
-            sportsMan.setVisibility(View.GONE);
+            sleep.setVisibility(View.GONE);
         }
     }
     private InstantHeartRateStore getInstantHeartRateStore() {
