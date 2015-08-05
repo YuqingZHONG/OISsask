@@ -19,9 +19,7 @@ import ee3316.intoheart.Data.HeartRateStoreController;
 import ee3316.intoheart.Data.UserStore;
 import ee3316.intoheart.HTTP.Connector;
 
-/**
- * Created by aahung on 3/9/15.
- */
+
 public class AnalysisFragment extends Fragment {
 
 
@@ -115,7 +113,7 @@ public class AnalysisFragment extends Fragment {
         aveText.setText(String.valueOf((int)analysisResult.average));
         minText.setText(String.valueOf((int)analysisResult.min));
         maxText.setText(String.valueOf((int)analysisResult.max));
-        if (analysisResult.max-analysisResult.min > 40) resultText.setText("Oh, you are in bad sleep apnea");
+        if (analysisResult.max-analysisResult.min > 40) resultText.setText("You might have sleep apnea.");
         else resultText.setText("Your sleep quality looks nice.");
     }
 

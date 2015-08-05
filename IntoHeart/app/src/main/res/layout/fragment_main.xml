@@ -17,14 +17,15 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="138dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sports_man"
+                android:id="@+id/sleep"
                 android:src="@drawable/sleep"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/instantHRTextView"
-                />
+                android:layout_toStartOf="@+id/instantHRTextView" />/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
