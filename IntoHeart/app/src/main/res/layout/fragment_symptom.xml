@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Snoring"
+                android:id="@+id/textView1"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/ysnore_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/nsnore_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="High blood pressure"
+                android:id="@+id/textView2"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/yblood_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/nblood_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Inattention"
+                android:id="@+id/textView3"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/yattention_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/nattention_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Excessive daytime sleepiness"
+                android:id="@+id/textView4"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/ysleep_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/nsleep_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Have heart disease"
+                android:id="@+id/textView5"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/yheart_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/nheart_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Emotional lability or testy"
+                android:id="@+id/textView6"
+                android:gravity="right"
+                android:textColor="#ffffff"
+                style="@style/MyTextBold"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/ytesty_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No/Not sure"
+                    android:id="@+id/ntesty_check"
+                    android:textColor="#ffffff"
+                    android:layout_margin="10dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
