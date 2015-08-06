@@ -18,6 +18,8 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 
@@ -40,6 +42,7 @@ import ee3316.intoheart.UIComponent.SimpleAlertController;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     public static final String PREFS_NAME_RECENT_ADDRESS = "PrefsRecentAddr";
+
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -68,6 +71,75 @@ public class MainActivity extends ActionBarActivity
         sensorConnectionManager = new SensorConnectionManager(this);
 
 
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.male_check:
+                if (checked)
+
+                    break;
+            case R.id.female_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.ytonsil_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.ntonsil_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.yalcohol_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.nalcohol_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.ybrain_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.nbrain_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.yfamily_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.nfamily_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.ysmoke_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.nsmoke_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.ysedative_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.nsedative_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+        }
     }
 
     @Override

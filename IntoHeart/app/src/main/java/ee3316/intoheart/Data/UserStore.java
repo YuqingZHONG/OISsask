@@ -14,9 +14,6 @@ import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 
-/**
- * Created by aahung on 3/31/15.
- */
 public class UserStore {
     private final String PREFERENCE = "into_heart";
     private final String PREFS_NAME_NAME = "user_name";
@@ -34,11 +31,20 @@ public class UserStore {
     private final String PREFS_NAME_MARK_0 = "mark_0";
     private final String PREFS_NAME_MARK_1 = "mark_1";
     private final String PREFS_NAME_MARK_2 = "mark_2";
+    private final String PREFS_NAME_SEX="user_gender";
+    private final String PREFS_NAME_ENLARGED_TONSIL="user_tonsil";
+    private final String PREFS_NAME_ALCOHOLISM="user_alcohol";
+    private final String PREFS_NAME_SMOKE="user_smoke";
+    private final String PREFS_NAME_TAKE_HYPNOTIC="user_hypnotic";
+    private final String PREFS_NAME_BRAIN_TUMOR="user_brain_tumor";
+    private final String PREFS_NAME_FAMILY_HISTORY="user_family_history";
+
 
     public SharedPreferences settings;
 
     private Context context;
     public String name, email, password;
+    public int gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history;
     public int age, height, weight;
     public String emergencyTel;
     public float[] lifestyles = new float[5];
@@ -53,6 +59,14 @@ public class UserStore {
 
     public void fetch() {
         name = settings.getString(PREFS_NAME_NAME, null);
+        gender=settings.getInt(PREFS_NAME_SEX, -1);
+        tonsil=settings.getInt(PREFS_NAME_ENLARGED_TONSIL, -1);
+        alcohol=settings.getInt(PREFS_NAME_ALCOHOLISM, -1);
+        smoke=settings.getInt(PREFS_NAME_SMOKE, -1);
+        hypnotic=settings.getInt(PREFS_NAME_TAKE_HYPNOTIC, -1);
+        brain_tumor=settings.getInt(PREFS_NAME_BRAIN_TUMOR, -1);
+        family_history=settings.getInt(PREFS_NAME_FAMILY_HISTORY, -1);
+
         email = settings.getString(PREFS_NAME_EMAIL, null);
         password = settings.getString(PREFS_NAME_PASSWORD, null);
         emergencyTel = settings.getString(PREFS_NAME_EMERGENCY_TEL, null);
@@ -86,6 +100,15 @@ public class UserStore {
         editor.putString(PREFS_NAME_EMERGENCY_TEL, emergencyTel);
         editor.putString(PREFS_NAME_EMAIL, email);
         editor.putString(PREFS_NAME_PASSWORD, password);
+
+        editor.putInt(PREFS_NAME_SEX, gender);
+        editor.putInt(PREFS_NAME_ENLARGED_TONSIL, tonsil);
+        editor.putInt(PREFS_NAME_ALCOHOLISM, alcohol);
+        editor.putInt(PREFS_NAME_SMOKE, smoke);
+        editor.putInt(PREFS_NAME_TAKE_HYPNOTIC, hypnotic);
+        editor.putInt(PREFS_NAME_BRAIN_TUMOR, brain_tumor);
+        editor.putInt(PREFS_NAME_FAMILY_HISTORY, family_history);
+
         editor.putFloat(PREFS_NAME_RATE_SMOKE, lifestyles[0]);
         editor.putFloat(PREFS_NAME_RATE_DRINK, lifestyles[1]);
         editor.putFloat(PREFS_NAME_RATE_OVERWORK, lifestyles[2]);
@@ -94,14 +117,18 @@ public class UserStore {
         editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
         editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
         editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);
+
         editor.commit();
         // update
         Connector connector = new Connector();
         if (getLogin())
             connector.updateUserInfo(email, password, String.format("{\"password\":\"%s\", \"name\":\"%s\", "
-                    + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\", "
+                    + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\"," +
+                            "\"gender\":\"%d\",\"tonsil\":\"%d\"," +"\"alcohol\":\"%d\",\"smoke\":\"%d\"," +
+                            "\"hypnotic\":\"%d\",\"brain_tumor\":\"%d\",\"family_history\":\"%d\" "
                     + "\"lifestyles\":[%f,%f,%f,%f,%f], \"score\":%d, \"scoreDetail\":[%d,%d,%d]}}",
                     password, name, age, height, weight, emergencyTel,
+                    gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history,
                     lifestyles[0], lifestyles[1], lifestyles[2], lifestyles[3], lifestyles[4],
                     markingManager.getFinalMark(), markingManager.mark[0],
                     markingManager.mark[1], markingManager.mark[2]), new JCallback<Outcome>() {
@@ -131,6 +158,22 @@ public class UserStore {
                         weight = jsonObject.get("weight").getAsInt();
                     if (jsonObject.get("phone") != null)
                         emergencyTel = jsonObject.get("phone").getAsString();
+                    if (jsonObject.get("gender")!=null)
+                        gender=jsonObject.get("gender").getAsInt();
+                    if (jsonObject.get("tonsil")!=null)
+                        tonsil=jsonObject.get("tonsil").getAsInt();
+                    if (jsonObject.get("alcohol")!=null)
+                        alcohol=jsonObject.get("alcohol").getAsInt();
+                    if (jsonObject.get("smoke")!=null)
+                        smoke=jsonObject.get("smoke").getAsInt();
+                    if (jsonObject.get("hypnotic")!=null)
+                        hypnotic=jsonObject.get("hypnotic").getAsInt();
+                    if (jsonObject.get("brain_tumor")!=null)
+                        brain_tumor=jsonObject.get("brain_tumor").getAsInt();
+                    if (jsonObject.get("family_history")!=null)
+                        family_history=jsonObject.get("family_history").getAsInt();
+
+
                     if (jsonObject.get("lifestyles") != null) {
                         JsonArray lifestylesArray = jsonObject.get("lifestyles").getAsJsonArray();
                         for (int i = 0; i < lifestylesArray.size(); ++i) {
@@ -155,7 +198,23 @@ public class UserStore {
         return (weight == -1)? null : Integer.valueOf(weight);
     }
 
-    public boolean getLogin() {
+    public Integer getGender() { return (gender == -1)? null : Integer.valueOf(gender); }
+
+    public Integer getTonsil() { return (tonsil == -1)? null : Integer.valueOf(tonsil); }
+
+    public Integer getAlcohol() { return (alcohol == -1)? null : Integer.valueOf(alcohol); }
+
+    public Integer getSmoke() { return (smoke == -1)? null : Integer.valueOf(smoke); }
+
+    public Integer getHypnotic() { return (hypnotic == -1)? null : Integer.valueOf(hypnotic); }
+
+    public Integer getBrain() { return (brain_tumor == -1)? null : Integer.valueOf(brain_tumor); }
+
+    public Integer getFamily() { return (family_history == -1)? null : Integer.valueOf(family_history); }
+
+
+
+    public Boolean getLogin() {
         if (email == null) return false;
         if (email.isEmpty()) return false;
         if (password == null) return false;

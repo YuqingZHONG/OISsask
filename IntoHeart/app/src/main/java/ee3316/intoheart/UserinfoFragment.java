@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -101,6 +103,28 @@ public class UserinfoFragment extends Fragment {
             weightPicker3.setValue(weight % 10);
         }
         emergencyEdit.setText(userStore.emergencyTel);
+
+        if (userStore.getGender() != null)
+          genderEdit=(RadioGroup)genderEdit.findViewById(userStore.getGender());
+
+        if (userStore.getTonsil() != null)
+            tonsilEdit=(RadioGroup)tonsilEdit.findViewById(userStore.getTonsil());
+        if (userStore.getAlcohol() != null)
+            alcoholEdit=(RadioGroup)alcoholEdit.findViewById(userStore.getAlcohol());
+
+        if (userStore.getSmoke() != null)
+            smokeEdit=(RadioGroup)smokeEdit.findViewById(userStore.getSmoke());
+
+        if (userStore.getHypnotic() != null)
+            sedativeEdit=(RadioGroup)sedativeEdit.findViewById(userStore.getHypnotic());
+
+        if (userStore.getBrain() != null)
+            brainEdit=(RadioGroup)brainEdit.findViewById(userStore.getBrain());
+
+        if (userStore.getFamily() != null)
+            familyEdit=(RadioGroup)familyEdit.findViewById(userStore.getFamily());
+
+
     }
 
     @Override
@@ -109,6 +133,8 @@ public class UserinfoFragment extends Fragment {
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
+
+
 
     @OnClick(R.id.save_button)
     public void save() {
@@ -122,6 +148,16 @@ public class UserinfoFragment extends Fragment {
         } catch (Exception ex) {}
         int weight = weightPicker.getValue() * 100 + weightPicker2.getValue() * 10 + weightPicker3.getValue();
         userStore.weight = Integer.valueOf(weight);
+
+        userStore.gender=Integer.valueOf(genderEdit.getCheckedRadioButtonId());
+        userStore.tonsil=Integer.valueOf(tonsilEdit.getCheckedRadioButtonId());
+        userStore.alcohol=Integer.valueOf(alcoholEdit.getCheckedRadioButtonId());
+        userStore.smoke=Integer.valueOf(smokeEdit.getCheckedRadioButtonId());
+        userStore.hypnotic=Integer.valueOf(sedativeEdit.getCheckedRadioButtonId());
+        userStore.brain_tumor=Integer.valueOf(brainEdit.getCheckedRadioButtonId());
+        userStore.family_history=Integer.valueOf(familyEdit.getCheckedRadioButtonId());
+
+
         userStore.save();
     }
 
@@ -135,6 +171,22 @@ public class UserinfoFragment extends Fragment {
     @InjectView(R.id.weightPicker3)
     NumberPicker weightPicker3;
     @InjectView(R.id.emergency_edit) EditText emergencyEdit;
+
+    @InjectView(R.id.gender_edit)
+    RadioGroup genderEdit;
+    @InjectView(R.id.tonsil_edit)
+    RadioGroup tonsilEdit;
+    @InjectView(R.id.alcohol_edit)
+    RadioGroup alcoholEdit;
+    @InjectView(R.id.smoke_edit)
+    RadioGroup smokeEdit;
+    @InjectView(R.id.sedative_edit)
+    RadioGroup sedativeEdit;
+    @InjectView(R.id.brain_edit)
+    RadioGroup brainEdit;
+    @InjectView(R.id.family_edit)
+    RadioGroup familyEdit;
+
 
     @OnClick(R.id.login_button)
     public void loginPrompt(View view) {

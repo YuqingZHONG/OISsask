@@ -103,7 +103,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/gender_edit">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -208,7 +209,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/tonsil_edit">
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -251,7 +253,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/alcohol_edit">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -294,7 +297,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/smoke_edit">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -335,7 +339,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/sedative_edit">
 
 
                     <RadioButton
@@ -379,7 +384,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/brain_edit">
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -404,7 +410,8 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                   >
 
 
                     <TextView
@@ -423,7 +430,8 @@
                     <RadioGroup
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:id="@+id/family_edit">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
