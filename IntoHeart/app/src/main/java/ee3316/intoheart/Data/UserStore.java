@@ -279,9 +279,6 @@ public class UserStore {
     public void syncSymptom() {
 
         markingManager.evaluateSymptom(symptoms);
-
-
-
         save();
     }
 

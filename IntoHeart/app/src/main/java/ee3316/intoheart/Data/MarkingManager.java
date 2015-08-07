@@ -43,32 +43,25 @@ public class MarkingManager {
            mark[0]=0;
     }
 
-<<<<<<< Updated upstream
+
     public void evaluateSymptom(boolean[] symptom) {
-        int s0=0,s1=0,s2=0,s3=0,s4=0,s5=0;
-        if(symptom[0]==true)
+        int s0 = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0;
+        if (symptom[0] == true)
             s0 = 15;
-        if(symptom[2]==true)
+        if (symptom[2] == true)
             s1 = 15;
-        if(symptom[4]==true)
+        if (symptom[4] == true)
             s2 = 10;
-        if(symptom[6]==true)
+        if (symptom[6] == true)
             s3 = 10;
-        if(symptom[8]==true)
+        if (symptom[8] == true)
             s4 = 10;
-        if(symptom[10]==true)
+        if (symptom[10] == true)
             s5 = 10;
         mark[2] = s0 + s1 + s2 + s3 + s4 + s5;
-
-=======
-
-
-    public void evaluateSymptom(float[] symptom) {
-        mark[2] = 4 * (25 -
-                (int) (symptom[0] + symptom[1] + symptom[2] + symptom[3] + symptom[4])
-        );
->>>>>>> Stashed changes
     }
+
+
 
     public int getFinalMark() {
         return (int) (mark[0] * 0.6 + mark[1] * 0.16 + mark[2] * 0.24);
@@ -77,13 +70,7 @@ public class MarkingManager {
     public int getApneaMark() {
         return (int) mark[0];
     }
-<<<<<<< Updated upstream
-    public int getRestMark(){
-        return (int) mark[1];
-    }
-=======
 
->>>>>>> Stashed changes
     public int getSymptomMark(){
         return (int) mark[2];
     }
