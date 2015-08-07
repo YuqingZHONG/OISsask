@@ -246,7 +246,6 @@ public class UserStore {
         return (weight == -1)? null : Integer.valueOf(weight);
     }
 
-    public boolean getLogin() {
 
     public Integer getGender() { return (gender == -1)? null : Integer.valueOf(gender); }
 
@@ -265,7 +264,7 @@ public class UserStore {
 
 
 
-    public Boolean getLogin() {
+
 
 
     public Boolean getLogin(){
