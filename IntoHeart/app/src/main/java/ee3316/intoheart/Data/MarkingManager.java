@@ -61,12 +61,6 @@ public class MarkingManager {
         mark[2] = s0 + s1 + s2 + s3 + s4 + s5;
     }
 
-
-
-    public int getFinalMark() {
-        return (int) (mark[0] * 0.6 + mark[1] * 0.16 + mark[2] * 0.24);
-    }
-
     public int getApneaMark() {
         return (int) mark[0];
     }

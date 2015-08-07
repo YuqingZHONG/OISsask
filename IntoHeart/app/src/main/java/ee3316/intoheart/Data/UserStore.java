@@ -166,7 +166,7 @@ public class UserStore {
 
            symptoms[0], symptoms[1], symptoms[2], symptoms[3], symptoms[4],symptoms[5],symptoms[6],symptoms[7],symptoms[8],symptoms[9],symptoms[10],symptoms[11],
 
-                    markingManager.getFinalMark(), markingManager.mark[0],
+                    getFinalMark(), markingManager.mark[0],
                     markingManager.mark[1], markingManager.mark[2]), new JCallback<Outcome>() {
                 @Override
                 public void call(Outcome outcome) {
