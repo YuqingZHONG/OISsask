@@ -48,7 +48,7 @@ public class HeartRateStoreController {
                         unixTime - unixTime % SEC_PER_10_MINS,
                         analysisResult.average, analysisResult.max, analysisResult.min, analysisResult.std_dev);
                 UserStore userStore = new UserStore(activity);
-                userStore.markingManager.evaluateRest((int)analysisResult.average);
+                userStore.markingManager.evaluateApnea(analysisResult.max-analysisResult.min);
                 userStore.save();
                 stagingHRs.clear();
                 addHR(hr);

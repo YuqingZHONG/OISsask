@@ -32,4 +32,4 @@
         android:layout_height="wrap_content"
         android:textSize="12dp"
         style="@style/MyText"/>
-</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/layout/listitem_sensor.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/layout/listitem_sensor.xml -->

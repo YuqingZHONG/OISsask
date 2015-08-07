@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" android:layout_height="fill_parent"
     android:gravity="center_horizontal"
-    android:background="@drawable/bg_green"
+    android:background="@drawable/bg"
     android:orientation="vertical">
 
     <ScrollView
@@ -85,6 +85,49 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Gender"
+                        android:id="@+id/textView10"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/gender_edit">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:id="@+id/male_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:id="@+id/female_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
@@ -144,6 +187,272 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/weightPicker3" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Enlarged Tonsil"
+                        android:id="@+id/textView11"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/tonsil_edit">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/ytonsil_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/ntonsil_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Alcoholism(over 5 bottles once)"
+                        android:id="@+id/textView12"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/alcohol_edit">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/yalcohol_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/nalcohol_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Over smoking(over 20 per day)"
+                        android:id="@+id/textView13"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/smoke_edit">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/ysmoke_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/nsmoke_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Take sedative/hypnotic"
+                        android:id="@+id/textView14"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/sedative_edit">
+
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/ysedative_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/nsedative_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Have brain tumor"
+                        android:id="@+id/textView15"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/brain_edit">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/ybrain_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/nbrain_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                   >
+
+
+                    <TextView
+                        android:layout_width="100dip"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Family history of sleep apnea"
+                        android:id="@+id/textView16"
+                        android:layout_margin="10dip"
+                        android:gravity="right"
+                        android:textColor="#ffffff"
+                        style="@style/MyTextBold"/>
+
+
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/family_edit">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        android:id="@+id/yfamily_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No/Not sure"
+                        android:id="@+id/nfamily_check"
+                        android:textColor="#ffffff"
+                        android:layout_margin="10dp"
+                        android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+
+                </LinearLayout>
+        
 
                 <LinearLayout
                     android:layout_marginTop="20dip"
@@ -253,16 +562,17 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LOG OUT"
+                    android:text="Log out"
                     android:id="@+id/logout_button"
-                    android:background="#b6bc24"
-                    android:textColor="#ffffff"
                     android:layout_weight="0.62"
                     android:padding="10dip"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginRight="10dp"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/button_default"
+                    style="@style/MyText"
                     />
 
             </LinearLayout>
@@ -271,4 +581,4 @@
 
     </ScrollView>
 
-</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/layout/fragment_userinfo.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/layout/fragment_userinfo.xml -->

@@ -48,16 +48,17 @@ public class AnalysisFragment extends Fragment {
     @InjectView(R.id.result_text)
     TextView resultText;
 
+    @InjectView(R.id.pathogenic_score)
+    TextView pathogenic_score;
+    @InjectView(R.id.sleep_apnea_score)
+    TextView sleep_apnea_score;
+    @InjectView(R.id.symptom_score)
+    TextView symptom_score;
 
-   /* @InjectView(R.id.final_score_view)
+    @InjectView(R.id.final_score_view)
     TextView finalScoreView;
-    @InjectView(R.id.heart_rate_score)
-    TextView heart_rate_score;
-    @InjectView(R.id.apnea_score)
-    TextView apnea_score;
-    @InjectView(R.id.life_style_score)
-    TextView life_style_score;
-*/
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,13 +66,13 @@ public class AnalysisFragment extends Fragment {
         setHasOptionsMenu(true);
         connector = new Connector();
         ButterKnife.inject(this,rootView);
-/*
+
        userStore = new UserStore(getActivity());
-        finalScoreView.setText(String.valueOf(userStore.markingManager.getFinalMark()));
-        heart_rate_score.setText(String.valueOf(userStore.markingManager.getRestMark()));
-        apnea_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
-        life_style_score.setText(String.valueOf(userStore.markingManager.getLifeStyleMark()));
-*/
+        finalScoreView.setText(String.valueOf(userStore.getFinalMark()));
+        sleep_apnea_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
+        pathogenic_score.setText(String.valueOf(userStore.getPathogenesisMark()));
+        symptom_score.setText(String.valueOf(userStore.markingManager.getSymptomMark()));
+
         Button btn_slow=(Button)rootView.findViewById(R.id.sleep_apnea);
         btn_slow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +116,10 @@ public class AnalysisFragment extends Fragment {
         maxText.setText(String.valueOf((int)analysisResult.max));
         if (analysisResult.max-analysisResult.min > 40) resultText.setText("You might have sleep apnea.");
         else resultText.setText("Your sleep quality looks nice.");
+
+        pathogenic_score.setText(String.valueOf(userStore.getPathogenesisMark()));
+        sleep_apnea_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
+        symptom_score.setText(String.valueOf(userStore.markingManager.getSymptomMark()));
     }
 
     @Override
