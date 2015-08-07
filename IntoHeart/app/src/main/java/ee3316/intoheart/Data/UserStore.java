@@ -15,6 +15,7 @@ import butterknife.InjectView;
 import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
+import ee3316.intoheart.MainActivity;
 
 /**
  * Created by aahung on 3/31/15.
@@ -54,6 +55,7 @@ public class UserStore {
     public RadioButton r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11;
 
 
+
     public MarkingManager markingManager = new MarkingManager();
 
     public UserStore(Context context) {
@@ -86,6 +88,10 @@ public class UserStore {
         markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 100);
         markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 100);
         syncSymptom();
+<<<<<<< Updated upstream
+=======
+        syncPathogenesis();
+>>>>>>> Stashed changes
     }
 
     public void saveUserLogin() {
@@ -170,6 +176,15 @@ public class UserStore {
         });
     }
 
+    public void getFinalScore(int score){
+        if(age>=40)
+            score=+10;
+        if(weight/(((float)height/100)*((float)height/100))>=25)
+            score=+10;
+
+
+    }
+
     public Integer getAge() { return (age == -1)? null : Integer.valueOf(age); }
 
     public Integer getHeight() {
@@ -180,7 +195,28 @@ public class UserStore {
         return (weight == -1)? null : Integer.valueOf(weight);
     }
 
+<<<<<<< Updated upstream
     public boolean getLogin() {
+=======
+    public Integer getGender() { return (gender == -1)? null : Integer.valueOf(gender); }
+
+    public Integer getTonsil() { return (tonsil == -1)? null : Integer.valueOf(tonsil); }
+
+    public Integer getAlcohol() { return (alcohol == -1)? null : Integer.valueOf(alcohol); }
+
+    public Integer getSmoke() { return (smoke == -1)? null : Integer.valueOf(smoke); }
+
+    public Integer getHypnotic() { return (hypnotic == -1)? null : Integer.valueOf(hypnotic); }
+
+    public Integer getBrain() { return (brain_tumor == -1)? null : Integer.valueOf(brain_tumor); }
+
+    public Integer getFamily() { return (family_history == -1)? null : Integer.valueOf(family_history); }
+
+
+
+
+    public Boolean getLogin() {
+>>>>>>> Stashed changes
         if (email == null) return false;
         if (email.isEmpty()) return false;
         if (password == null) return false;
@@ -189,7 +225,30 @@ public class UserStore {
     }
 
     public void syncSymptom() {
+<<<<<<< Updated upstream
         markingManager.evaluateSymptom(symptoms);
+=======
+        markingManager.evaluateSymptom(lifestyles);
+>>>>>>> Stashed changes
         save();
+    }
+
+    public void syncPathogenesis(){
+        getFinalScore(MainActivity.finalScore);
+        save();
+    }
+
+    public int getPathogenesisMark(){
+        if(age>=40)
+            MainActivity.finalScore=+10;
+        if(weight/(((float)height/100)*((float)height/100))>=25)
+            MainActivity.finalScore=+10;
+
+        return MainActivity.finalScore;
+
+    }
+
+    public int getFinalMark(){
+        return (int)(markingManager.mark[0]*0.6+getPathogenesisMark()*0.16+markingManager.mark[2]*0.24);
     }
 }

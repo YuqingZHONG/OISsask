@@ -17,4 +17,4 @@
         android:textSize="18sp"
         android:layout_alignParentRight="true"
         style="@style/MyText"/>
-</RelativeLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/layout/listitem_raw_data.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/layout/listitem_raw_data.xml -->

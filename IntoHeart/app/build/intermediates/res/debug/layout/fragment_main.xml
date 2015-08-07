@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="@drawable/bg_green"
+    android:background="@drawable/bg"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -17,14 +17,15 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="138dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sports_man"
-                android:src="@drawable/sports_person1"
+                android:id="@+id/sleep"
+                android:src="@drawable/sleep"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/instantHRTextView"
-                />
+                android:layout_toStartOf="@+id/instantHRTextView" />/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,4 +147,4 @@
         <!--android:id="@+id/graph" />-->
 
 <!--</LinearLayout>-->
-<!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/layout/fragment_main.xml -->
+<!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/layout/fragment_main.xml -->

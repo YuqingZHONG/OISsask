@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_green"
+    android:background="@drawable/bg"
     android:weightSum="1">
 
     <LinearLayout
@@ -140,4 +140,4 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
-</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/ih/IntoHeart/app/src/main/res/layout/marking.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/layout/marking.xml -->

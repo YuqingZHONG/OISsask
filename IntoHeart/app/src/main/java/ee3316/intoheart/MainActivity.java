@@ -40,6 +40,10 @@ import ee3316.intoheart.UIComponent.SimpleAlertController;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     public static final String PREFS_NAME_RECENT_ADDRESS = "PrefsRecentAddr";
+<<<<<<< Updated upstream
+=======
+    public static int finalScore=0;
+>>>>>>> Stashed changes
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -70,6 +74,78 @@ public class MainActivity extends ActionBarActivity
 
     }
 
+<<<<<<< Updated upstream
+=======
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.male_check:
+                if (checked)
+                    finalScore=+10;
+                    break;
+            case R.id.female_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.ytonsil_check:
+                if (checked)
+                    finalScore=+15;
+                    break;
+            case R.id.ntonsil_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.yalcohol_check:
+                if (checked)
+                    finalScore=+10;
+                    break;
+            case R.id.nalcohol_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.ybrain_check:
+                if (checked)
+                    finalScore=+15;
+                    break;
+            case R.id.nbrain_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.yfamily_check:
+                if (checked)
+                    finalScore=+10;
+                    break;
+            case R.id.nfamily_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+            case R.id.ysmoke_check:
+                if (checked)
+                    finalScore=+10;
+                    break;
+            case R.id.nsmoke_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+            case R.id.ysedative_check:
+                if (checked)
+                    finalScore=+10;
+                    break;
+            case R.id.nsedative_check:
+                if (checked)
+                    // Ninjas rule
+                    break;
+
+        }
+    }
+
+>>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -402,13 +478,13 @@ public class MainActivity extends ActionBarActivity
 
         public void welcome() {
             String text = String.format("Hey! You are now in Sleep mode, "
-                    + "I will tell you when your heart rate is too high, "
+                    + "I will wake you up when you fall in sleep apnea, "
                     + "current threshold is %s beats per minute.", SLEEP_MAX_HR);
             speak(text);
         }
 
         public void alert() {
-            speak("Please stop,your heart rate is too high");
+            speak("Please wake up");
         }
 
         public void speak(String text) {
