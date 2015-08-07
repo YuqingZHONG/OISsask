@@ -3,13 +3,15 @@ package ee3316.intoheart.Data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.internal.app.ToolbarActionBar;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-
+import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-
+import android.os.Bundle;
 import org.json.JSONObject;
 
+import butterknife.InjectView;
 import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
@@ -26,11 +28,18 @@ public class UserStore {
     private final String PREFS_NAME_EMERGENCY_TEL = "user_emergency_tel";
     private final String PREFS_NAME_EMAIL = "user_email";
     private final String PREFS_NAME_PASSWORD = "user_password";
-    private final String PREFS_NAME_RATE_SMOKE = "user_smoke_rate";
-    private final String PREFS_NAME_RATE_DRINK = "user_drink_rate";
-    private final String PREFS_NAME_RATE_OVERWORK = "user_ow_rate";
-    private final String PREFS_NAME_RATE_DISORDER = "user_dis_rate";
-    private final String PREFS_NAME_RATE_STAY_UP = "user_stay_rate";
+    private final String PREFS_NAME_SNORING_Y = "user_snoring_yes";
+    private final String PREFS_NAME_SNORING_N = "user_snoring_no";
+    private final String PREFS_NAME_HIGH_BLOOD_PRESSURE_Y = "user_high_blood_pressure_yes";
+    private final String PREFS_NAME_HIGH_BLOOD_PRESSURE_N = "user_high_blood_pressure_no";
+    private final String PREFS_NAME_INATTENTION_Y = "user_inattention_yes";
+    private final String PREFS_NAME_INATTENTION_N = "user_inattention_no";
+    private final String PREFS_NAME_SLEEPINESS_Y = "user_sleepiness_yes";
+    private final String PREFS_NAME_SLEEPINESS_N = "user_sleepiness_no";
+    private final String PREFS_NAME_HEART_DISEASE_Y = "user_heart_disease_yes";
+    private final String PREFS_NAME_HEART_DISEASE_N = "user_heart_disease_no";
+    private final String PREFS_NAME_EMOTIONAL_LABILITY_Y = "user_emotional_lability_yes";
+    private final String PREFS_NAME_EMOTIONAL_LABILITY_N= "user_emotional_lability_no";
     private final String PREFS_NAME_MARK_0 = "mark_0";
     private final String PREFS_NAME_MARK_1 = "mark_1";
     private final String PREFS_NAME_MARK_2 = "mark_2";
@@ -41,7 +50,9 @@ public class UserStore {
     public String name, email, password;
     public int age, height, weight;
     public String emergencyTel;
-    public float[] lifestyles = new float[5];
+    public boolean[] symptoms = new boolean[12];
+    public RadioButton r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11;
+
 
     public MarkingManager markingManager = new MarkingManager();
 
@@ -59,15 +70,22 @@ public class UserStore {
         age = settings.getInt(PREFS_NAME_AGE, -1);
         height = settings.getInt(PREFS_NAME_HEIGHT, -1);
         weight = settings.getInt(PREFS_NAME_WEIGHT, -1);
-        lifestyles[0] = settings.getFloat(PREFS_NAME_RATE_SMOKE, 0);
-        lifestyles[1] = settings.getFloat(PREFS_NAME_RATE_DRINK, 0);
-        lifestyles[2] = settings.getFloat(PREFS_NAME_RATE_OVERWORK, 0);
-        lifestyles[3] = settings.getFloat(PREFS_NAME_RATE_DISORDER, 0);
-        lifestyles[4] = settings.getFloat(PREFS_NAME_RATE_STAY_UP, 0);
+        symptoms[0] = settings.getBoolean(PREFS_NAME_SNORING_Y, false);
+        symptoms[1] = settings.getBoolean(PREFS_NAME_SNORING_N, false);
+        symptoms[2] = settings.getBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, false);
+        symptoms[3] = settings.getBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, false);
+        symptoms[4] = settings.getBoolean(PREFS_NAME_INATTENTION_Y, false);
+        symptoms[5] = settings.getBoolean(PREFS_NAME_INATTENTION_N, false);
+        symptoms[6] = settings.getBoolean(PREFS_NAME_SLEEPINESS_Y, false);
+        symptoms[7] = settings.getBoolean(PREFS_NAME_SLEEPINESS_N, false);
+        symptoms[8] = settings.getBoolean(PREFS_NAME_HEART_DISEASE_Y, false);
+        symptoms[9] = settings.getBoolean(PREFS_NAME_HEART_DISEASE_N, false);
+        symptoms[10] = settings.getBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y, false);
+        symptoms[11] = settings.getBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N, false);
         markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 100);
         markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 100);
         markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 100);
-        syncLifestyle();
+        syncSymptom();
     }
 
     public void saveUserLogin() {
@@ -86,11 +104,18 @@ public class UserStore {
         editor.putString(PREFS_NAME_EMERGENCY_TEL, emergencyTel);
         editor.putString(PREFS_NAME_EMAIL, email);
         editor.putString(PREFS_NAME_PASSWORD, password);
-        editor.putFloat(PREFS_NAME_RATE_SMOKE, lifestyles[0]);
-        editor.putFloat(PREFS_NAME_RATE_DRINK, lifestyles[1]);
-        editor.putFloat(PREFS_NAME_RATE_OVERWORK, lifestyles[2]);
-        editor.putFloat(PREFS_NAME_RATE_DISORDER, lifestyles[3]);
-        editor.putFloat(PREFS_NAME_RATE_STAY_UP, lifestyles[4]);
+        editor.putBoolean(PREFS_NAME_SNORING_Y,r0.isChecked());
+        editor.putBoolean(PREFS_NAME_SNORING_N,r1.isChecked());
+        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y,r2.isChecked());
+        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N,r3.isChecked());
+        editor.putBoolean(PREFS_NAME_INATTENTION_Y,r4.isChecked());
+        editor.putBoolean(PREFS_NAME_INATTENTION_N,r5.isChecked());
+        editor.putBoolean(PREFS_NAME_SLEEPINESS_Y,r6.isChecked());
+        editor.putBoolean(PREFS_NAME_SLEEPINESS_N,r7.isChecked());
+        editor.putBoolean(PREFS_NAME_HEART_DISEASE_Y,r8.isChecked());
+        editor.putBoolean(PREFS_NAME_HEART_DISEASE_N,r9.isChecked());
+        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y,r10.isChecked());
+        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N,r11.isChecked());
         editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
         editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
         editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);
@@ -102,7 +127,7 @@ public class UserStore {
                     + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\", "
                     + "\"lifestyles\":[%f,%f,%f,%f,%f], \"score\":%d, \"scoreDetail\":[%d,%d,%d]}}",
                     password, name, age, height, weight, emergencyTel,
-                    lifestyles[0], lifestyles[1], lifestyles[2], lifestyles[3], lifestyles[4],
+                    symptoms[0], symptoms[1], symptoms[2], symptoms[3], symptoms[4],symptoms[5],symptoms[6],symptoms[7],symptoms[8],symptoms[9],symptoms[10],symptoms[11],
                     markingManager.getFinalMark(), markingManager.mark[0],
                     markingManager.mark[1], markingManager.mark[2]), new JCallback<Outcome>() {
                 @Override
@@ -131,10 +156,10 @@ public class UserStore {
                         weight = jsonObject.get("weight").getAsInt();
                     if (jsonObject.get("phone") != null)
                         emergencyTel = jsonObject.get("phone").getAsString();
-                    if (jsonObject.get("lifestyles") != null) {
-                        JsonArray lifestylesArray = jsonObject.get("lifestyles").getAsJsonArray();
-                        for (int i = 0; i < lifestylesArray.size(); ++i) {
-                            lifestyles[i] = lifestylesArray.get(i).getAsFloat();
+                    if (jsonObject.get("symptoms") != null) {
+                        JsonArray symptomsArray = jsonObject.get("symptoms").getAsJsonArray();
+                        for (int i = 0; i < symptomsArray.size(); ++i) {
+                            symptoms[i] = symptomsArray.get(i).getAsBoolean();
                         }
                     }
                     save();
@@ -163,8 +188,8 @@ public class UserStore {
         return false;
     }
 
-    public void syncLifestyle() {
-        markingManager.evaluateLifestyle(lifestyles);
+    public void syncSymptom() {
+        markingManager.evaluateSymptom(symptoms);
         save();
     }
 }

@@ -47,10 +47,22 @@ public class MarkingManager {
         else mark[1] = 100;
     }
 
-    public void evaluateLifestyle(float[] lifestyle) {
-        mark[2] = 4 * (25 -
-                (int) (lifestyle[0] + lifestyle[1] + lifestyle[2] + lifestyle[3] + lifestyle[4])
-        );
+    public void evaluateSymptom(boolean[] symptom) {
+        int s0=0,s1=0,s2=0,s3=0,s4=0,s5=0;
+        if(symptom[0]==true)
+            s0 = 15;
+        if(symptom[2]==true)
+            s1 = 15;
+        if(symptom[4]==true)
+            s2 = 10;
+        if(symptom[6]==true)
+            s3 = 10;
+        if(symptom[8]==true)
+            s4 = 10;
+        if(symptom[10]==true)
+            s5 = 10;
+        mark[2] = s0 + s1 + s2 + s3 + s4 + s5;
+
     }
 
     public int getFinalMark() {
@@ -63,7 +75,7 @@ public class MarkingManager {
     public int getRestMark(){
         return (int) mark[1];
     }
-    public int getLifeStyleMark(){
+    public int getSymptomMark(){
         return (int) mark[2];
     }
 }
