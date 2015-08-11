@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import butterknife.ButterKnife;
@@ -69,7 +70,7 @@ public class UserinfoFragment extends Fragment {
     @InjectView(R.id.family_edit)
     RadioGroup familyEdit;
 
-
+    private RadioGroup[] radioGroups;
 
 
     @Override
@@ -78,6 +79,33 @@ public class UserinfoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_userinfo, container, false);
         setHasOptionsMenu(true);
         ButterKnife.inject(this, rootView);
+
+        radioGroups = new RadioGroup[] {
+                genderEdit,
+                tonsilEdit,
+                alcoholEdit,
+                smokeEdit,
+                sedativeEdit,
+                brainEdit,
+                familyEdit
+        };
+
+        RadioGroup.OnCheckedChangeListener onCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int buttonIndex = group.indexOfChild(group.findViewById(checkedId));
+                int groupIndex = 0;
+                for (int i = 0; i < radioGroups.length; ++i) {
+                    if (radioGroups[i] == group) groupIndex = i;
+                }
+                System.out.printf("button %d:%d clicked\n", groupIndex, buttonIndex);
+                userStore.pathogenesis[groupIndex] = buttonIndex;
+            }
+        };
+
+        for (RadioGroup radioGroup: radioGroups) {
+            radioGroup.setOnCheckedChangeListener(onCheckedChangeListener);
+        }
         {
             userStore = new UserStore(getActivity());
 
@@ -104,26 +132,11 @@ public class UserinfoFragment extends Fragment {
         }
         emergencyEdit.setText(userStore.emergencyTel);
 
-        if (userStore.getGender() != null)
-           genderEdit.check(userStore.getGender());
-
-        if (userStore.getTonsil() != null)
-            tonsilEdit.check(userStore.getTonsil());
-        if (userStore.getAlcohol() != null)
-            alcoholEdit.check(userStore.getAlcohol());
-
-        if (userStore.getSmoke() != null)
-            smokeEdit.check(userStore.getSmoke());
-
-        if (userStore.getHypnotic() != null)
-            sedativeEdit.check(userStore.getHypnotic());
-
-        if (userStore.getBrain() != null)
-            brainEdit.check(userStore.getBrain());
-
-        if (userStore.getFamily() != null)
-            familyEdit.check(userStore.getFamily());
-
+        for (int i = 0; i < radioGroups.length; ++i) {
+            if (userStore.pathogenesis[i] < 0) continue;
+            RadioButton radioButton = (RadioButton)radioGroups[i].getChildAt(userStore.pathogenesis[i]);
+            radioButton.setChecked(true);
+        }
 
     }
 

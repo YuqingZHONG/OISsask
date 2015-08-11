@@ -42,10 +42,6 @@ import ee3316.intoheart.UIComponent.SimpleAlertController;
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     public static final String PREFS_NAME_RECENT_ADDRESS = "PrefsRecentAddr";
-
-    public static int finalScore=0;
-
-
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
@@ -76,7 +72,7 @@ public class MainActivity extends ActionBarActivity
     }
 
 
-    public void onRadioButtonClicked(View view) {
+   /* public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -84,19 +80,13 @@ public class MainActivity extends ActionBarActivity
         switch(view.getId()) {
             case R.id.male_check:
                 if (checked)
-
-                    finalScore=+10;
-
                     break;
             case R.id.female_check:
                 if (checked)
                     // Ninjas rule
                     break;
-
             case R.id.ytonsil_check:
                 if (checked)
-
-                    finalScore=+15;
 
                     break;
             case R.id.ntonsil_check:
@@ -105,9 +95,6 @@ public class MainActivity extends ActionBarActivity
                     break;
             case R.id.yalcohol_check:
                 if (checked)
-
-                    finalScore=+10;
-
                     break;
             case R.id.nalcohol_check:
                 if (checked)
@@ -115,17 +102,14 @@ public class MainActivity extends ActionBarActivity
                     break;
             case R.id.ybrain_check:
                 if (checked)
-
-                    finalScore=+15;
                     break;
             case R.id.nbrain_check:
                 if (checked)
                     // Ninjas rule
                     break;
-
             case R.id.yfamily_check:
                 if (checked)
-            finalScore=+10;
+
 
                     break;
             case R.id.nfamily_check:
@@ -134,9 +118,6 @@ public class MainActivity extends ActionBarActivity
                     break;
             case R.id.ysmoke_check:
                 if (checked)
-
-                    finalScore=+10;
-
                     break;
             case R.id.nsmoke_check:
                 if (checked)
@@ -146,7 +127,6 @@ public class MainActivity extends ActionBarActivity
             case R.id.ysedative_check:
                 if (checked)
 
-                    finalScore=+10;
 
                     break;
             case R.id.nsedative_check:
@@ -154,8 +134,9 @@ public class MainActivity extends ActionBarActivity
                     // Ninjas rule
                     break;
 
+
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,7 +20,7 @@ public class MarkingManager {
         targetHRs.put(45, new int[]{88, 149, 175});
     }
 
-    public int mark[] = new int[]{100, 100, 100};
+    public int mark[] = new int[]{0, 0, 0};
 
     private int matchTableAge(int age) {
         int tableAge = (Integer) targetHRs.keySet().toArray()[0];
@@ -59,6 +59,27 @@ public class MarkingManager {
         if (symptom[10] == true)
             s5 = 10;
         mark[2] = s0 + s1 + s2 + s3 + s4 + s5;
+    }
+
+    public int getPathogenesisMark(int[] mark1, int age, int bmi){
+        mark[1]=0;
+        for(int i=0;i<mark1.length;i++){
+            if(i==1||i==5) {
+                if (mark1[i] == 1)
+                    mark[1] += 15;
+            }
+            else {
+                if (mark1[i] == 1)
+                    mark[1]+=10;
+            }
+        }
+
+        if(age>=40)
+            mark[1]+=10;
+        if(bmi>=25)
+            mark[1]+=10;
+
+        return mark[1];
     }
 
     public int getApneaMark() {

@@ -47,7 +47,8 @@ public class UserStore {
     private final String PREFS_NAME_TAKE_HYPNOTIC="user_hypnotic";
     private final String PREFS_NAME_BRAIN_TUMOR="user_brain_tumor";
     private final String PREFS_NAME_FAMILY_HISTORY="user_family_history";
-    final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
+    private final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
+
 
     public SharedPreferences settings;
 
@@ -56,6 +57,7 @@ public class UserStore {
     public int gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history;
     public int age, height, weight;
     public String emergencyTel;
+    public int[] pathogenesis=new int [7];
     public int[] symptoms = new int[12];
 
 
@@ -95,12 +97,26 @@ public class UserStore {
         symptoms[9] = settings.getInt(PREFS_NAME_HEART_DISEASE_N, -1);
         symptoms[10] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_Y, -1);
         symptoms[11] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_N, -1);*/
-        markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 100);
-        markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 100);
-        markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 100);
+        markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 0);
+        markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 0);
+        markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 0);
+
+        for (int i = 0; i < pathogenesis.length; ++i) {
+            pathogenesis[i] = settings.getInt(radioGroupStrings[i], -1); // -1 means undefined
+        }
 
 
-    }
+    }final String[] radioGroupStrings = new String[] {
+            PREFS_NAME_SEX,
+            PREFS_NAME_ENLARGED_TONSIL,
+            PREFS_NAME_ALCOHOLISM,
+            PREFS_NAME_SMOKE,
+            PREFS_NAME_TAKE_HYPNOTIC,
+            PREFS_NAME_BRAIN_TUMOR,
+            PREFS_NAME_FAMILY_HISTORY
+    };
+
+
 
     public void save() {
         SharedPreferences.Editor editor = settings.edit();
@@ -113,13 +129,9 @@ public class UserStore {
         editor.putString(PREFS_NAME_PASSWORD, password);
 
 
-        editor.putInt(PREFS_NAME_SEX, gender);
-        editor.putInt(PREFS_NAME_ENLARGED_TONSIL, tonsil);
-        editor.putInt(PREFS_NAME_ALCOHOLISM, alcohol);
-        editor.putInt(PREFS_NAME_SMOKE, smoke);
-        editor.putInt(PREFS_NAME_TAKE_HYPNOTIC, hypnotic);
-        editor.putInt(PREFS_NAME_BRAIN_TUMOR, brain_tumor);
-        editor.putInt(PREFS_NAME_FAMILY_HISTORY, family_history);
+        for (int i = 0; i < radioGroupStrings.length; ++i) {
+            editor.putInt(radioGroupStrings[i], pathogenesis[i]);
+        }
 
 
        /* editor.putInt(PREFS_NAME_SNORING_Y, symptoms[0]);
@@ -141,14 +153,6 @@ public class UserStore {
         editor.commit();
     }
 
-    public void getFinalScore(int score){
-        if(age>=40)
-            score=+10;
-        if(weight/(((float)height/100)*((float)height/100))>=25)
-            score=+10;
-
-
-    }
 
     public Integer getAge() { return (age == -1)? null : Integer.valueOf(age); }
 
@@ -161,32 +165,10 @@ public class UserStore {
     }
 
 
-    public Integer getGender() { return (gender == -1)? null : Integer.valueOf(gender); }
 
-    public Integer getTonsil() { return (tonsil == -1)? null : Integer.valueOf(tonsil); }
-
-    public Integer getAlcohol() { return (alcohol == -1)? null : Integer.valueOf(alcohol); }
-
-    public Integer getSmoke() { return (smoke == -1)? null : Integer.valueOf(smoke); }
-
-    public Integer getHypnotic() { return (hypnotic == -1)? null : Integer.valueOf(hypnotic); }
-
-    public Integer getBrain() { return (brain_tumor == -1)? null : Integer.valueOf(brain_tumor); }
-
-    public Integer getFamily() { return (family_history == -1)? null : Integer.valueOf(family_history); }
-
-
-    public int getPathogenesisMark(){
-        if(age>=40)
-            MainActivity.finalScore=+10;
-        if(weight/(((float)height/100)*((float)height/100))>=25)
-            MainActivity.finalScore=+10;
-
-        return MainActivity.finalScore;
-
-    }
 
     public int getFinalMark(){
-        return (int)(markingManager.mark[0]*0.6+getPathogenesisMark()*0.16+markingManager.getSymptomMark()*0.24);
+        float bmi=(float)weight/(((float)height/100)*((float)height/100));
+        return (int)(markingManager.mark[0]*0.6+markingManager.getPathogenesisMark(pathogenesis,age,(int)bmi)*0.16+markingManager.getSymptomMark()*0.24);
     }
 }

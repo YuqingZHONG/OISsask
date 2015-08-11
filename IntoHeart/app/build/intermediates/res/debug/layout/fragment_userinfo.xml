@@ -112,7 +112,7 @@
                         android:id="@+id/male_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
 
                     <RadioButton
                         android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                         android:id="@+id/female_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     </RadioGroup>
 
                 </LinearLayout>
@@ -219,7 +219,7 @@
                         android:id="@+id/ytonsil_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -227,7 +227,7 @@
                         android:id="@+id/ntonsil_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
 
                     </RadioGroup>
 
@@ -262,7 +262,7 @@
                         android:id="@+id/yalcohol_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -270,7 +270,7 @@
                         android:id="@+id/nalcohol_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     </RadioGroup>
 
 
@@ -306,7 +306,7 @@
                         android:id="@+id/ysmoke_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                         android:id="@+id/nsmoke_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     </RadioGroup>
 
 
@@ -350,7 +350,7 @@
                         android:id="@+id/ysedative_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -358,7 +358,7 @@
                         android:id="@+id/nsedative_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     </RadioGroup>
 
 
@@ -394,7 +394,7 @@
                         android:id="@+id/ybrain_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -402,7 +402,7 @@
                         android:id="@+id/nbrain_check"
                         android:textColor="#ffffff"
                         android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        />
                     </RadioGroup>
 
 
@@ -438,16 +438,14 @@
                         android:text="Yes"
                         android:id="@+id/yfamily_check"
                         android:textColor="#ffffff"
-                        android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        android:layout_margin="10dp"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="No/Not sure"
                         android:id="@+id/nfamily_check"
                         android:textColor="#ffffff"
-                        android:layout_margin="10dp"
-                        android:onClick="onRadioButtonClicked"/>
+                        android:layout_margin="10dp"/>
                     </RadioGroup>
 
 

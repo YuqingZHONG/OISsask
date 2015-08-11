@@ -159,20 +159,7 @@ public class SymptomFragment extends Fragment {
 
     }
 */
-  public void SavePreferences(String key, int value){
 
-      SharedPreferences.Editor editor = settings.edit();
-      editor.putInt(key, value);
-      editor.commit();
-  }
-
-    public void LoadPreferences(){
-        for(int i=0;i<6;i++) {
-            int savedRadioIndex = settings.getInt(KEY_SAVED_RADIO_BUTTON_INDEX, 0);
-            RadioButton savedCheckedRadioButton = (RadioButton) radioGroups[i].getChildAt(savedRadioIndex);
-            savedCheckedRadioButton.setChecked(true);
-        }
-    }
 
    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState) {
@@ -182,7 +169,7 @@ public class SymptomFragment extends Fragment {
        userStore = new UserStore(getActivity());
        for(int i=0;i<6;i++) {
            radioGroups[i].setOnCheckedChangeListener(radioGroupOnCheckedChangeListener);
-          LoadPreferences();
+
        }
 
        return rootView;
@@ -196,7 +183,7 @@ public class SymptomFragment extends Fragment {
                         RadioButton checkedRadioButton = (RadioButton) radioGroups[i].findViewById(checkedId);
                         int checkedIndex = radioGroups[i].indexOfChild(checkedRadioButton);
 
-                        userStore.SavePreferences(KEY_SAVED_RADIO_BUTTON_INDEX, checkedIndex);
+
                     }
                 }};
 
