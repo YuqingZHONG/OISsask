@@ -54,22 +54,10 @@ public class UserStore {
     public int gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history;
     public int age, height, weight;
     public String emergencyTel;
-    public boolean[] symptoms = new boolean[12];
+    public int[] symptoms = new int[12];
 
 
 
-    @InjectView(R.id.ysnore_check) RadioButton r0;
-    @InjectView(R.id.nsnore_check) RadioButton r1;
-    @InjectView(R.id.yblood_check) RadioButton r2;
-    @InjectView(R.id.nblood_check) RadioButton r3;
-    @InjectView(R.id.yattention_check) RadioButton r4;
-    @InjectView(R.id.nattention_check) RadioButton r5;
-    @InjectView(R.id.ysleep_check) RadioButton r6;
-    @InjectView(R.id.nsleep_check) RadioButton r7;
-    @InjectView(R.id.yheart_check) RadioButton r8;
-    @InjectView(R.id.nheart_check) RadioButton r9;
-    @InjectView(R.id.ytesty_check) RadioButton r10;
-    @InjectView(R.id.ntesty_check) RadioButton r11;
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -96,18 +84,18 @@ public class UserStore {
         age = settings.getInt(PREFS_NAME_AGE, -1);
         height = settings.getInt(PREFS_NAME_HEIGHT, -1);
         weight = settings.getInt(PREFS_NAME_WEIGHT, -1);
-        symptoms[0] = settings.getBoolean(PREFS_NAME_SNORING_Y, false);
-        symptoms[1] = settings.getBoolean(PREFS_NAME_SNORING_N, false);
-        symptoms[2] = settings.getBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, false);
-        symptoms[3] = settings.getBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, false);
-        symptoms[4] = settings.getBoolean(PREFS_NAME_INATTENTION_Y, false);
-        symptoms[5] = settings.getBoolean(PREFS_NAME_INATTENTION_N, false);
-        symptoms[6] = settings.getBoolean(PREFS_NAME_SLEEPINESS_Y, false);
-        symptoms[7] = settings.getBoolean(PREFS_NAME_SLEEPINESS_N, false);
-        symptoms[8] = settings.getBoolean(PREFS_NAME_HEART_DISEASE_Y, false);
-        symptoms[9] = settings.getBoolean(PREFS_NAME_HEART_DISEASE_N, false);
-        symptoms[10] = settings.getBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y, false);
-        symptoms[11] = settings.getBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N, false);
+       /* symptoms[0] = settings.getInt(PREFS_NAME_SNORING_Y, -1);
+        symptoms[1] = settings.getInt(PREFS_NAME_SNORING_N, -1);
+        symptoms[2] = settings.getInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, -1);
+        symptoms[3] = settings.getInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, -1);
+        symptoms[4] = settings.getInt(PREFS_NAME_INATTENTION_Y, -1);
+        symptoms[5] = settings.getInt(PREFS_NAME_INATTENTION_N, -1);
+        symptoms[6] = settings.getInt(PREFS_NAME_SLEEPINESS_Y, -1);
+        symptoms[7] = settings.getInt(PREFS_NAME_SLEEPINESS_N, -1);
+        symptoms[8] = settings.getInt(PREFS_NAME_HEART_DISEASE_Y, -1);
+        symptoms[9] = settings.getInt(PREFS_NAME_HEART_DISEASE_N, -1);
+        symptoms[10] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_Y, -1);
+        symptoms[11] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_N, -1);*/
         markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 100);
         markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 100);
         markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 100);
@@ -136,21 +124,21 @@ public class UserStore {
         editor.putInt(PREFS_NAME_FAMILY_HISTORY, family_history);
 
 
-        editor.putBoolean(PREFS_NAME_SNORING_Y, r0.isChecked());
-        editor.putBoolean(PREFS_NAME_SNORING_N, r1.isChecked());
-        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, r2.isChecked());
-        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, r3.isChecked());
-        editor.putBoolean(PREFS_NAME_INATTENTION_Y, r4.isChecked());
-        editor.putBoolean(PREFS_NAME_INATTENTION_N, r5.isChecked());
-        editor.putBoolean(PREFS_NAME_SLEEPINESS_Y, r6.isChecked());
-        editor.putBoolean(PREFS_NAME_SLEEPINESS_N, r7.isChecked());
-        editor.putBoolean(PREFS_NAME_HEART_DISEASE_Y, r8.isChecked());
-        editor.putBoolean(PREFS_NAME_HEART_DISEASE_N, r9.isChecked());
-        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y, r10.isChecked());
-        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N, r11.isChecked());
+       /* editor.putInt(PREFS_NAME_SNORING_Y, symptoms[0]);
+        editor.putInt(PREFS_NAME_SNORING_N, symptoms[1]);
+        editor.putInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, symptoms[2]);
+        editor.putInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, symptoms[3]);
+        editor.putInt(PREFS_NAME_INATTENTION_Y, symptoms[4]);
+        editor.putInt(PREFS_NAME_INATTENTION_N, symptoms[5]);
+        editor.putInt(PREFS_NAME_SLEEPINESS_Y, symptoms[6]);
+        editor.putInt(PREFS_NAME_SLEEPINESS_N, symptoms[7]);
+        editor.putInt(PREFS_NAME_HEART_DISEASE_Y, symptoms[8]);
+        editor.putInt(PREFS_NAME_HEART_DISEASE_N,symptoms[9]);
+        editor.putInt(PREFS_NAME_EMOTIONAL_LABILITY_Y, symptoms[10]);
+        editor.putInt(PREFS_NAME_EMOTIONAL_LABILITY_N, symptoms[11]);
         editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
         editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
-        editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);
+        editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);*/
 
         editor.commit();
     }

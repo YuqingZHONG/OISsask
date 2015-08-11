@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.InjectViews;
 import ee3316.intoheart.Data.UserStore;
 import ee3316.intoheart.HTTP.JCallback;
@@ -61,12 +62,32 @@ public class SymptomFragment extends Fragment {
             R.id.emotional
             })RadioGroup[] radioGroups;
 
+    @InjectView(R.id.ysnore_check) RadioButton r0;
+    @InjectView(R.id.nsnore_check) RadioButton r1;
+    @InjectView(R.id.yblood_check) RadioButton r2;
+    @InjectView(R.id.nblood_check) RadioButton r3;
+    @InjectView(R.id.yattention_check) RadioButton r4;
+    @InjectView(R.id.nattention_check) RadioButton r5;
+    @InjectView(R.id.ysleep_check) RadioButton r6;
+    @InjectView(R.id.nsleep_check) RadioButton r7;
+    @InjectView(R.id.yheart_check) RadioButton r8;
+    @InjectView(R.id.nheart_check) RadioButton r9;
+    @InjectView(R.id.ytesty_check) RadioButton r10;
+    @InjectView(R.id.ntesty_check) RadioButton r11;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
         setHasOptionsMenu(true);
-        ButterKnife.inject(this, rootView);
+        {
+            userStore = new UserStore(getActivity());
+
+          //  updateContent();
+
+            return rootView;
+        }
+      /* ButterKnife.inject(this, rootView);
 
         fetchSymptom = new JCallback<Outcome>() {
             @Override
@@ -98,14 +119,42 @@ public class SymptomFragment extends Fragment {
 
         for (int i = 0; i < 6; ++i)
             radioGroups[i].setOnCheckedChangeListener(updateSymptom);
-        return rootView;
+        return rootView;*/
     }
 
 
 
     public JCallback<Outcome> fetchSymptom;
     public RadioGroup.OnCheckedChangeListener updateSymptom;
+/*
+    private void updateContent() {
+        for(int i=0; i<12;i++){
+            if(userStore)
+        }
 
+        if (userStore.getGender() != null)
+            genderEdit=(RadioGroup)genderEdit.findViewById(userStore.getGender());
+
+        if (userStore.getTonsil() != null)
+            tonsilEdit=(RadioGroup)tonsilEdit.findViewById(userStore.getTonsil());
+        if (userStore.getAlcohol() != null)
+            alcoholEdit=(RadioGroup)alcoholEdit.findViewById(userStore.getAlcohol());
+
+        if (userStore.getSmoke() != null)
+            smokeEdit=(RadioGroup)smokeEdit.findViewById(userStore.getSmoke());
+
+        if (userStore.getHypnotic() != null)
+            sedativeEdit=(RadioGroup)sedativeEdit.findViewById(userStore.getHypnotic());
+
+        if (userStore.getBrain() != null)
+            brainEdit=(RadioGroup)brainEdit.findViewById(userStore.getBrain());
+
+        if (userStore.getFamily() != null)
+            familyEdit=(RadioGroup)familyEdit.findViewById(userStore.getFamily());
+
+
+    }
+*/
 
     @Override
     public void onAttach(Activity activity) {

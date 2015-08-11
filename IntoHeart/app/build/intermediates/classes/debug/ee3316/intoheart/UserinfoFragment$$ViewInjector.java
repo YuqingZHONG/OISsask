@@ -8,10 +8,6 @@ import butterknife.ButterKnife.Injector;
 public class UserinfoFragment$$ViewInjector<T extends ee3316.intoheart.UserinfoFragment> implements Injector<T> {
   @Override public void inject(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493077, "field 'login_block'");
-    target.login_block = finder.castView(view, 2131493077, "field 'login_block'");
-    view = finder.findRequiredView(source, 2131493080, "field 'logout_block'");
-    target.logout_block = finder.castView(view, 2131493080, "field 'logout_block'");
     view = finder.findRequiredView(source, 2131492959, "field 'nameEdit'");
     target.nameEdit = finder.castView(view, 2131492959, "field 'nameEdit'");
     view = finder.findRequiredView(source, 2131493043, "field 'ageEdit'");
@@ -52,8 +48,6 @@ public class UserinfoFragment$$ViewInjector<T extends ee3316.intoheart.UserinfoF
   }
 
   @Override public void reset(T target) {
-    target.login_block = null;
-    target.logout_block = null;
     target.nameEdit = null;
     target.ageEdit = null;
     target.heightEdit = null;

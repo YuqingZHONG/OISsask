@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/array.xml -->
-    <eat-comment/>
-    <string-array name="fastdiseasename_array">
-        <item>What is tachycardia</item>
-        <item>Sinus tachycardia</item>
-        <item>Atrial fibrillation</item>
-        <item>Atrial flutter</item>
-        <item>AV nodal reentrant tachycardia</item>
-        <item>Atrial tachycardia</item>
-        <item>Multifocal atrial tachycardia</item>
-        <item>Junctional tachycardia</item>
-        <item>Ventricular tachycardia</item>
-    </string-array>
-    <string-array name="fastdiseaseurls_array">
-        <item>"http://en.wikipedia.org/wiki/Tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Sinus_tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Atrial_fibrillation"</item>
-        <item>"http://en.wikipedia.org/wiki/Atrial_flutter"</item>
-        <item>"http://en.wikipedia.org/wiki/AV_nodal_reentrant_tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Atrial_tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Multifocal_atrial_tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Junctional_tachycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Ventricular_tachycardia"</item>
-    </string-array>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_settings.xml -->
     <eat-comment/>
     <string-array name="pref_example_list_titles">
@@ -57,22 +33,6 @@
     <array name="sections">
 
     </array>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/array.xml -->
-    <eat-comment/>
-    <string-array name="slowdiseasename_array">
-        <item>What is bradycardia</item>
-        <item>Sinus bradycardia</item>
-        <item>Sick sinus syndrome</item>
-        <item>Junctional rhythm</item>
-        <item>Atrioventricular block</item>
-    </string-array>
-    <string-array name="slowdiseaseurls_array">
-        <item>"http://en.wikipedia.org/wiki/Bradycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Sinus_bradycardia"</item>
-        <item>"http://en.wikipedia.org/wiki/Sick_sinus_syndrome"</item>
-        <item>"http://en.wikipedia.org/wiki/Junctional_rhythm"</item>
-        <item>"http://en.wikipedia.org/wiki/Atrioventricular_block"</item>
-    </string-array>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -288,16 +248,7 @@
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_login.xml -->
-    <eat-comment/>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_lifeRecord.xml -->
-    <eat-comment/>
-    <string name="alcohol">alcohol</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
-    <string name="app_name">Into Heart</string>
+    <string name="app_name">Apnea-out</string>
     <string name="ble_not_supported">BLE is not supported</string>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
@@ -340,30 +291,14 @@
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="disconnected">Disconnected</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_lifeRecord.xml -->
-    <eat-comment/>
-    <string name="eating_disorder">eating disorder</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
     <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_login.xml -->
-    <eat-comment/>
-    <string name="error_field_required">This field is required</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_exercise">Exercise mode</string>
     <string name="menu_normal">Normal mode</string>
     <string name="menu_scan">Scan</string>
+    <string name="menu_sleep">Sleep mode</string>
     <string name="menu_stop">Stop</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_lifeRecord.xml -->
-    <eat-comment/>
-    <string name="overwork">overwork</string>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_settings.xml -->
     <eat-comment/>
     <string name="pref_default_display_name">John Smith</string>
@@ -382,29 +317,13 @@
     <string name="pref_title_sync_frequency">Sync frequency</string>
     <string name="pref_title_system_sync_settings">System sync settings</string>
     <string name="pref_title_vibrate">Vibrate</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_login.xml -->
-    <eat-comment/>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_lifeRecord.xml -->
-    <eat-comment/>
-    <string name="smoking">smoking</string>
-    <string name="stay_up_late">stay up late</string>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/admob_strings.xml -->
     <eat-comment/>
     <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
     <string name="store_picture_title">Save image</string>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="title_activity_disease_detail">SlowDiseaseMainActivity</string>
-    <string name="title_activity_disease_list">FastDiseaseMainActivity</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_login.xml -->
-    <eat-comment/>
-    <string name="title_activity_login">Sign in</string>
-    <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings.xml -->
-    <eat-comment/>
     <string name="title_activity_marking">MarkingActivity</string>
-    <string name="title_activity_ranking">RankingActivity</string>
     <string name="title_activity_raw_data">RawDataActivity</string>
     <!-- From: file:/C:/Users/Lily/AndroidStudioProjects/OIS/IntoHeart/app/src/main/res/values/strings_activity_settings.xml -->
     <eat-comment/>

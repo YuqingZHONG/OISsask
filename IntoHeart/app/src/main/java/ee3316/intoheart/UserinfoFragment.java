@@ -43,10 +43,32 @@ public class UserinfoFragment extends Fragment {
 
     }
 
-    @InjectView(R.id.login_block)
-    LinearLayout login_block;
-    @InjectView(R.id.logout_block)
-    LinearLayout logout_block;
+    @InjectView(R.id.name_edit) EditText nameEdit;
+    @InjectView(R.id.age_edit) EditText ageEdit;
+    @InjectView(R.id.height_edit) EditText heightEdit;
+    @InjectView(R.id.weightPicker)
+    NumberPicker weightPicker;
+    @InjectView(R.id.weightPicker2)
+    NumberPicker weightPicker2;
+    @InjectView(R.id.weightPicker3)
+    NumberPicker weightPicker3;
+    @InjectView(R.id.emergency_edit) EditText emergencyEdit;
+
+    @InjectView(R.id.gender_edit)
+    RadioGroup genderEdit;
+    @InjectView(R.id.tonsil_edit)
+    RadioGroup tonsilEdit;
+    @InjectView(R.id.alcohol_edit)
+    RadioGroup alcoholEdit;
+    @InjectView(R.id.smoke_edit)
+    RadioGroup smokeEdit;
+    @InjectView(R.id.sedative_edit)
+    RadioGroup sedativeEdit;
+    @InjectView(R.id.brain_edit)
+    RadioGroup brainEdit;
+    @InjectView(R.id.family_edit)
+    RadioGroup familyEdit;
+
 
 
 
@@ -83,24 +105,24 @@ public class UserinfoFragment extends Fragment {
         emergencyEdit.setText(userStore.emergencyTel);
 
         if (userStore.getGender() != null)
-          genderEdit=(RadioGroup)genderEdit.findViewById(userStore.getGender());
+           genderEdit.check(userStore.getGender());
 
         if (userStore.getTonsil() != null)
-            tonsilEdit=(RadioGroup)tonsilEdit.findViewById(userStore.getTonsil());
+            tonsilEdit.check(userStore.getTonsil());
         if (userStore.getAlcohol() != null)
-            alcoholEdit=(RadioGroup)alcoholEdit.findViewById(userStore.getAlcohol());
+            alcoholEdit.check(userStore.getAlcohol());
 
         if (userStore.getSmoke() != null)
-            smokeEdit=(RadioGroup)smokeEdit.findViewById(userStore.getSmoke());
+            smokeEdit.check(userStore.getSmoke());
 
         if (userStore.getHypnotic() != null)
-            sedativeEdit=(RadioGroup)sedativeEdit.findViewById(userStore.getHypnotic());
+            sedativeEdit.check(userStore.getHypnotic());
 
         if (userStore.getBrain() != null)
-            brainEdit=(RadioGroup)brainEdit.findViewById(userStore.getBrain());
+            brainEdit.check(userStore.getBrain());
 
         if (userStore.getFamily() != null)
-            familyEdit=(RadioGroup)familyEdit.findViewById(userStore.getFamily());
+            familyEdit.check(userStore.getFamily());
 
 
     }
@@ -139,31 +161,6 @@ public class UserinfoFragment extends Fragment {
         userStore.save();
     }
 
-    @InjectView(R.id.name_edit) EditText nameEdit;
-    @InjectView(R.id.age_edit) EditText ageEdit;
-    @InjectView(R.id.height_edit) EditText heightEdit;
-    @InjectView(R.id.weightPicker)
-    NumberPicker weightPicker;
-    @InjectView(R.id.weightPicker2)
-    NumberPicker weightPicker2;
-    @InjectView(R.id.weightPicker3)
-    NumberPicker weightPicker3;
-    @InjectView(R.id.emergency_edit) EditText emergencyEdit;
-
-    @InjectView(R.id.gender_edit)
-    RadioGroup genderEdit;
-    @InjectView(R.id.tonsil_edit)
-    RadioGroup tonsilEdit;
-    @InjectView(R.id.alcohol_edit)
-    RadioGroup alcoholEdit;
-    @InjectView(R.id.smoke_edit)
-    RadioGroup smokeEdit;
-    @InjectView(R.id.sedative_edit)
-    RadioGroup sedativeEdit;
-    @InjectView(R.id.brain_edit)
-    RadioGroup brainEdit;
-    @InjectView(R.id.family_edit)
-    RadioGroup familyEdit;
 
 
 

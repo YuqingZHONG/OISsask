@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Into Heart</string>
+    <string name="app_name">Apnea-out</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,7 +7,7 @@
     <string name="menu_scan">Scan</string>
     <string name="menu_stop">Stop</string>
 
-    <string name="menu_exercise">Exercise mode</string>
+    <string name="menu_sleep">Sleep mode</string>
     <string name="menu_normal">Normal mode</string>
 
     <string name="connected">Connected</string>
@@ -23,9 +23,8 @@
 
     </array>
     <string name="title_activity_raw_data">RawDataActivity</string>
-    <string name="title_activity_ranking">RankingActivity</string>
-    <string name="title_activity_disease_detail">SlowDiseaseMainActivity</string>
-    <string name="title_activity_disease_list">FastDiseaseMainActivity</string>
+
+
     <string name="title_activity_speech">SpeechActivity</string>
     <string name="title_activity_marking">MarkingActivity</string>
     <string name="hello_world">Hello world!</string>
