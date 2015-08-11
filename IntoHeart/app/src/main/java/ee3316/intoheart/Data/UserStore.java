@@ -2,12 +2,14 @@ package ee3316.intoheart.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import butterknife.InjectView;
+import butterknife.InjectViews;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
@@ -45,7 +47,7 @@ public class UserStore {
     private final String PREFS_NAME_TAKE_HYPNOTIC="user_hypnotic";
     private final String PREFS_NAME_BRAIN_TUMOR="user_brain_tumor";
     private final String PREFS_NAME_FAMILY_HISTORY="user_family_history";
-
+    final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
 
     public SharedPreferences settings;
 
@@ -70,6 +72,14 @@ public class UserStore {
     @InjectView(R.id.nheart_check) RadioButton r9;
     @InjectView(R.id.ytesty_check) RadioButton r10;
     @InjectView(R.id.ntesty_check) RadioButton r11;
+    @InjectViews({
+            R.id.snoring,
+            R.id.highblood,
+            R.id.inattention,
+            R.id.sleepiness,
+            R.id.heart,
+            R.id.emotional
+    })RadioGroup[] radioGroups;
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -115,6 +125,20 @@ public class UserStore {
 
     }
 
+    public void SavePreferences(String key, int value){
+
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(key, value);
+        editor.commit();
+    }
+
+    public void LoadPreferences(){
+        for(int i=0;i<6;i++) {
+            int savedRadioIndex = settings.getInt(KEY_SAVED_RADIO_BUTTON_INDEX, 0);
+            RadioButton savedCheckedRadioButton = (RadioButton) radioGroups[i].getChildAt(savedRadioIndex);
+            savedCheckedRadioButton.setChecked(true);
+        }
+    }
 
     public void save() {
         SharedPreferences.Editor editor = settings.edit();
