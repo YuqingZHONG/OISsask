@@ -51,6 +51,7 @@ public class UserStore {
 
 
     public SharedPreferences settings;
+    public int mark1=0;
 
     private Context context;
     public String name, email, password;
@@ -169,6 +170,7 @@ public class UserStore {
 
     public int getFinalMark(){
         float bmi=(float)weight/(((float)height/100)*((float)height/100));
-        return (int)(markingManager.mark[0]*0.6+markingManager.getPathogenesisMark(pathogenesis,age,(int)bmi)*0.16+markingManager.getSymptomMark()*0.24);
+        mark1=markingManager.getPathogenesisMark(pathogenesis,age,(int)bmi);
+        return (int)(markingManager.mark[0]*0.6+mark1*0.16+markingManager.getSymptomMark()*0.24);
     }
 }

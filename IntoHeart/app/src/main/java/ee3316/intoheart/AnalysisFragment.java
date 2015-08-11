@@ -67,7 +67,7 @@ public class AnalysisFragment extends Fragment {
        userStore = new UserStore(getActivity());
         finalScoreView.setText(String.valueOf(userStore.getFinalMark()));
         sleep_apnea_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
-        pathogenic_score.setText(String.valueOf(userStore.getPathogenesisMark()));
+        pathogenic_score.setText(String.valueOf(userStore.mark1));
         symptom_score.setText(String.valueOf(userStore.markingManager.getSymptomMark()));
 
         Button btn_slow=(Button)rootView.findViewById(R.id.sleep_apnea);
@@ -114,7 +114,7 @@ public class AnalysisFragment extends Fragment {
         if (analysisResult.max-analysisResult.min > 40) resultText.setText("You might have sleep apnea.");
         else resultText.setText("Your sleep quality looks nice.");
 
-        pathogenic_score.setText(String.valueOf(userStore.getPathogenesisMark()));
+        pathogenic_score.setText(String.valueOf(userStore.mark1));
         sleep_apnea_score.setText(String.valueOf(userStore.markingManager.getApneaMark()));
         symptom_score.setText(String.valueOf(userStore.markingManager.getSymptomMark()));
     }
