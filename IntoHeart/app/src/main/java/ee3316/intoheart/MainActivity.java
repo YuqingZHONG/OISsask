@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity
         sectionTitles.add("Analysis");
         sectionTitles.add("Sensors");
         sectionTitles.add("My Info");
-        sectionTitles.add("Lifestyle");
+        sectionTitles.add("Symptom");
 
 
         sensorConnectionManager = new SensorConnectionManager(this);
@@ -261,7 +261,7 @@ public class MainActivity extends ActionBarActivity
                 fragment = UserinfoFragment.newInstance(position + 1);
                 break;
             case 4:
-                fragment = LifestyleFragment.newInstance(position + 1);
+                fragment = SymptomFragment.newInstance(position + 1);
                 break;
 
         }

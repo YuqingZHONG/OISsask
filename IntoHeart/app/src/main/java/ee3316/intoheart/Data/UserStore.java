@@ -2,17 +2,11 @@ package ee3316.intoheart.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.internal.app.ToolbarActionBar;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import android.os.Bundle;
-import org.json.JSONObject;
 
-import butterknife.InjectView;
-import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
@@ -101,18 +95,10 @@ public class UserStore {
         markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 100);
         markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 100);
         markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 100);
-        syncSymptom();
 
-        syncPathogenesis();
 
     }
 
-    public void saveUserLogin() {
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(PREFS_NAME_EMAIL, email);
-        editor.putString(PREFS_NAME_PASSWORD, password);
-        editor.commit();
-    }
 
     public void save() {
         SharedPreferences.Editor editor = settings.edit();
@@ -146,86 +132,15 @@ public class UserStore {
         editor.putBoolean(PREFS_NAME_HEART_DISEASE_N,r9.isChecked());
         editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y,r10.isChecked());
         editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N,r11.isChecked());
-
         editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
         editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
         editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);
 
         editor.commit();
-        // update
-        Connector connector = new Connector();
-        if (getLogin())
-            connector.updateUserInfo(email, password, String.format("{\"password\":\"%s\", \"name\":\"%s\", "
-                    + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\"," +
-                            "\"gender\":\"%d\",\"tonsil\":\"%d\"," +"\"alcohol\":\"%d\",\"smoke\":\"%d\"," +
-                            "\"hypnotic\":\"%d\",\"brain_tumor\":\"%d\",\"family_history\":\"%d\" "
-                    + "\"lifestyles\":[%f,%f,%f,%f,%f], \"score\":%d, \"scoreDetail\":[%d,%d,%d]}}",
-                    password, name, age, height, weight, emergencyTel,
 
-                    gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history,
-
-           symptoms[0], symptoms[1], symptoms[2], symptoms[3], symptoms[4],symptoms[5],symptoms[6],symptoms[7],symptoms[8],symptoms[9],symptoms[10],symptoms[11],
-
-                    getFinalMark(), markingManager.mark[0],
-                    markingManager.mark[1], markingManager.mark[2]), new JCallback<Outcome>() {
-                @Override
-                public void call(Outcome outcome) {
-                    if (outcome.success) {
-//                        Toast.makeText(context, "your info has been updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, outcome.getString(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
     }
 
-    public void fetchFromOnline(final JCallback<Outcome> callback) {
-        Connector connector = new Connector();
-        connector.getUserInfo(email, password, new JCallback<Outcome>() {
-            @Override
-            public void call(Outcome outcome) {
-                if (outcome.success) {
-                    JsonObject jsonObject = (JsonObject) outcome.object;
-                    if (jsonObject.get("age") != null)
-                        age = jsonObject.get("age").getAsInt();
-                    if (jsonObject.get("height") != null)
-                        height = jsonObject.get("height").getAsInt();
-                    if (jsonObject.get("weight") != null)
-                        weight = jsonObject.get("weight").getAsInt();
-                    if (jsonObject.get("phone") != null)
-                        emergencyTel = jsonObject.get("phone").getAsString();
 
-                    if (jsonObject.get("gender")!=null)
-                        gender=jsonObject.get("gender").getAsInt();
-                    if (jsonObject.get("tonsil")!=null)
-                        tonsil=jsonObject.get("tonsil").getAsInt();
-                    if (jsonObject.get("alcohol")!=null)
-                        alcohol=jsonObject.get("alcohol").getAsInt();
-                    if (jsonObject.get("smoke")!=null)
-                        smoke=jsonObject.get("smoke").getAsInt();
-                    if (jsonObject.get("hypnotic")!=null)
-                        hypnotic=jsonObject.get("hypnotic").getAsInt();
-                    if (jsonObject.get("brain_tumor")!=null)
-                        brain_tumor=jsonObject.get("brain_tumor").getAsInt();
-                    if (jsonObject.get("family_history")!=null)
-                        family_history=jsonObject.get("family_history").getAsInt();
-
-
-
-                    if (jsonObject.get("symptoms") != null) {
-                        JsonArray symptomsArray = jsonObject.get("symptoms").getAsJsonArray();
-                        for (int i = 0; i < symptomsArray.size(); ++i) {
-                            symptoms[i] = symptomsArray.get(i).getAsBoolean();
-
-                        }
-                    }
-                    save();
-                    if (callback != null)
-                        callback.call(new Outcome(true, ""));
-                }
-            }
-        });
-    }
 
     public void getFinalScore(int score){
         if(age>=40)
@@ -262,31 +177,6 @@ public class UserStore {
     public Integer getFamily() { return (family_history == -1)? null : Integer.valueOf(family_history); }
 
 
-
-
-
-
-
-    public Boolean getLogin(){
-
-        if (email == null) return false;
-        if (email.isEmpty()) return false;
-        if (password == null) return false;
-        if (!email.isEmpty() && !password.isEmpty()) return true;
-        return false;
-    }
-
-    public void syncSymptom() {
-
-        markingManager.evaluateSymptom(symptoms);
-        save();
-    }
-
-    public void syncPathogenesis(){
-        getFinalScore(MainActivity.finalScore);
-        save();
-    }
-
     public int getPathogenesisMark(){
         if(age>=40)
             MainActivity.finalScore=+10;
@@ -298,6 +188,6 @@ public class UserStore {
     }
 
     public int getFinalMark(){
-        return (int)(markingManager.mark[0]*0.6+getPathogenesisMark()*0.16+markingManager.mark[2]*0.24);
+        return (int)(markingManager.mark[0]*0.6+getPathogenesisMark()*0.16+markingManager.getSymptomMark()*0.24);
     }
 }

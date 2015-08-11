@@ -146,7 +146,7 @@
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 android:paddingLeft="10dp"
-                android:id="@+id/" />
+                />
 
             <TextView
                 style="@style/MyText"

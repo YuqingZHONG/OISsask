@@ -1,22 +1,18 @@
 package ee3316.intoheart;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-
 
 
 import butterknife.ButterKnife;
 import butterknife.InjectViews;
 import ee3316.intoheart.Data.UserStore;
-import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 
@@ -26,7 +22,7 @@ import ee3316.intoheart.HTTP.Outcome;
 public class SymptomFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     UserStore userStore;
-    Connector connector;
+
 
     public static SymptomFragment newInstance(int sectionNumber) {
         SymptomFragment fragment = new SymptomFragment();
@@ -71,6 +67,7 @@ public class SymptomFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
         setHasOptionsMenu(true);
         ButterKnife.inject(this, rootView);
+
         fetchSymptom = new JCallback<Outcome>() {
             @Override
             public void call(Outcome outcome) {
@@ -98,8 +95,7 @@ public class SymptomFragment extends Fragment {
         };
         userStore = new UserStore(getActivity());
         fetchSymptom.call(null);
-        if (userStore.getLogin())
-            userStore.fetchFromOnline(fetchSymptom);
+
         for (int i = 0; i < 6; ++i)
             radioGroups[i].setOnCheckedChangeListener(updateSymptom);
         return rootView;

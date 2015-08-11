@@ -1,7 +1,6 @@
 package ee3316.intoheart;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,7 +15,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import ee3316.intoheart.Data.HeartRateStoreController;
 import ee3316.intoheart.Data.UserStore;
-import ee3316.intoheart.HTTP.Connector;
 
 
 public class AnalysisFragment extends Fragment {
@@ -25,7 +22,7 @@ public class AnalysisFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     UserStore userStore;
-    Connector connector;
+
 
     public static AnalysisFragment newInstance(int sectionNumber) {
         AnalysisFragment fragment = new AnalysisFragment();
@@ -64,7 +61,7 @@ public class AnalysisFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_analysis, container, false);
         setHasOptionsMenu(true);
-        connector = new Connector();
+
         ButterKnife.inject(this,rootView);
 
        userStore = new UserStore(getActivity());
