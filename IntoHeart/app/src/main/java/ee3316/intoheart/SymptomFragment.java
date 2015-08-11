@@ -1,6 +1,7 @@
 package ee3316.intoheart;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,7 +38,7 @@ public class SymptomFragment extends Fragment {
 
     }
 
-
+    final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
 
     @InjectViews({
             R.id.ysnore_check,
@@ -58,9 +59,10 @@ public class SymptomFragment extends Fragment {
             R.id.highblood,
             R.id.inattention,
             R.id.sleepiness,
-            R.id.heart,
+            R.id.heartdisease,
             R.id.emotional
             })RadioGroup[] radioGroups;
+
 
     @InjectView(R.id.ysnore_check) RadioButton r0;
     @InjectView(R.id.nsnore_check) RadioButton r1;
@@ -75,8 +77,9 @@ public class SymptomFragment extends Fragment {
     @InjectView(R.id.ytesty_check) RadioButton r10;
     @InjectView(R.id.ntesty_check) RadioButton r11;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+
+
+  /*  public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
         setHasOptionsMenu(true);
@@ -87,7 +90,7 @@ public class SymptomFragment extends Fragment {
 
             return rootView;
         }
-      /* ButterKnife.inject(this, rootView);
+       ButterKnife.inject(this, rootView);
 
         fetchSymptom = new JCallback<Outcome>() {
             @Override
@@ -119,13 +122,14 @@ public class SymptomFragment extends Fragment {
 
         for (int i = 0; i < 6; ++i)
             radioGroups[i].setOnCheckedChangeListener(updateSymptom);
-        return rootView;*/
+        return rootView;
     }
 
 
 
     public JCallback<Outcome> fetchSymptom;
     public RadioGroup.OnCheckedChangeListener updateSymptom;
+
 /*
     private void updateContent() {
         for(int i=0; i<12;i++){
@@ -155,6 +159,46 @@ public class SymptomFragment extends Fragment {
 
     }
 */
+  public void SavePreferences(String key, int value){
+
+      SharedPreferences.Editor editor = settings.edit();
+      editor.putInt(key, value);
+      editor.commit();
+  }
+
+    public void LoadPreferences(){
+        for(int i=0;i<6;i++) {
+            int savedRadioIndex = settings.getInt(KEY_SAVED_RADIO_BUTTON_INDEX, 0);
+            RadioButton savedCheckedRadioButton = (RadioButton) radioGroups[i].getChildAt(savedRadioIndex);
+            savedCheckedRadioButton.setChecked(true);
+        }
+    }
+
+   public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                            Bundle savedInstanceState) {
+       View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
+       setHasOptionsMenu(true);
+       ButterKnife.inject(this, rootView);
+       userStore = new UserStore(getActivity());
+       for(int i=0;i<6;i++) {
+           radioGroups[i].setOnCheckedChangeListener(radioGroupOnCheckedChangeListener);
+          LoadPreferences();
+       }
+
+       return rootView;
+   }
+    RadioGroup.OnCheckedChangeListener radioGroupOnCheckedChangeListener =
+            new RadioGroup.OnCheckedChangeListener(){
+
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    for(int i=0;i<6;i++) {
+                        RadioButton checkedRadioButton = (RadioButton) radioGroups[i].findViewById(checkedId);
+                        int checkedIndex = radioGroups[i].indexOfChild(checkedRadioButton);
+
+                        userStore.SavePreferences(KEY_SAVED_RADIO_BUTTON_INDEX, checkedIndex);
+                    }
+                }};
 
     @Override
     public void onAttach(Activity activity) {

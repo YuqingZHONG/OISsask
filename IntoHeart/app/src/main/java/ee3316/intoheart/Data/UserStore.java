@@ -2,12 +2,14 @@ package ee3316.intoheart.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import butterknife.InjectView;
+import butterknife.InjectViews;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
@@ -45,7 +47,7 @@ public class UserStore {
     private final String PREFS_NAME_TAKE_HYPNOTIC="user_hypnotic";
     private final String PREFS_NAME_BRAIN_TUMOR="user_brain_tumor";
     private final String PREFS_NAME_FAMILY_HISTORY="user_family_history";
-
+    final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
 
     public SharedPreferences settings;
 
@@ -55,9 +57,6 @@ public class UserStore {
     public int age, height, weight;
     public String emergencyTel;
     public int[] symptoms = new int[12];
-
-
-
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -102,7 +101,6 @@ public class UserStore {
 
 
     }
-
 
     public void save() {
         SharedPreferences.Editor editor = settings.edit();
