@@ -7,9 +7,12 @@ import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import butterknife.InjectView;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
+import ee3316.intoheart.R;
+
 
 public class UserStore {
     private final String PREFERENCE = "into_heart";
@@ -52,8 +55,21 @@ public class UserStore {
     public int age, height, weight;
     public String emergencyTel;
     public boolean[] symptoms = new boolean[12];
-    public RadioButton r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11;
 
+
+
+    @InjectView(R.id.ysnore_check) RadioButton r0;
+    @InjectView(R.id.nsnore_check) RadioButton r1;
+    @InjectView(R.id.yblood_check) RadioButton r2;
+    @InjectView(R.id.nblood_check) RadioButton r3;
+    @InjectView(R.id.yattention_check) RadioButton r4;
+    @InjectView(R.id.nattention_check) RadioButton r5;
+    @InjectView(R.id.ysleep_check) RadioButton r6;
+    @InjectView(R.id.nsleep_check) RadioButton r7;
+    @InjectView(R.id.yheart_check) RadioButton r8;
+    @InjectView(R.id.nheart_check) RadioButton r9;
+    @InjectView(R.id.ytesty_check) RadioButton r10;
+    @InjectView(R.id.ntesty_check) RadioButton r11;
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -120,27 +136,24 @@ public class UserStore {
         editor.putInt(PREFS_NAME_FAMILY_HISTORY, family_history);
 
 
-        editor.putBoolean(PREFS_NAME_SNORING_Y,r0.isChecked());
-        editor.putBoolean(PREFS_NAME_SNORING_N,r1.isChecked());
-        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y,r2.isChecked());
-        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N,r3.isChecked());
-        editor.putBoolean(PREFS_NAME_INATTENTION_Y,r4.isChecked());
-        editor.putBoolean(PREFS_NAME_INATTENTION_N,r5.isChecked());
-        editor.putBoolean(PREFS_NAME_SLEEPINESS_Y,r6.isChecked());
-        editor.putBoolean(PREFS_NAME_SLEEPINESS_N,r7.isChecked());
-        editor.putBoolean(PREFS_NAME_HEART_DISEASE_Y,r8.isChecked());
-        editor.putBoolean(PREFS_NAME_HEART_DISEASE_N,r9.isChecked());
-        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y,r10.isChecked());
-        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N,r11.isChecked());
+        editor.putBoolean(PREFS_NAME_SNORING_Y, r0.isChecked());
+        editor.putBoolean(PREFS_NAME_SNORING_N, r1.isChecked());
+        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, r2.isChecked());
+        editor.putBoolean(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, r3.isChecked());
+        editor.putBoolean(PREFS_NAME_INATTENTION_Y, r4.isChecked());
+        editor.putBoolean(PREFS_NAME_INATTENTION_N, r5.isChecked());
+        editor.putBoolean(PREFS_NAME_SLEEPINESS_Y, r6.isChecked());
+        editor.putBoolean(PREFS_NAME_SLEEPINESS_N, r7.isChecked());
+        editor.putBoolean(PREFS_NAME_HEART_DISEASE_Y, r8.isChecked());
+        editor.putBoolean(PREFS_NAME_HEART_DISEASE_N, r9.isChecked());
+        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_Y, r10.isChecked());
+        editor.putBoolean(PREFS_NAME_EMOTIONAL_LABILITY_N, r11.isChecked());
         editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
         editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
         editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);
 
         editor.commit();
-
     }
-
-
 
     public void getFinalScore(int score){
         if(age>=40)
