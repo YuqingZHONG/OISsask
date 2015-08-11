@@ -16,6 +16,7 @@ import ee3316.intoheart.HTTP.Connector;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
+import ee3316.intoheart.R;
 
 public class UserStore {
     private final String PREFERENCE = "into_heart";
@@ -58,8 +59,21 @@ public class UserStore {
     public int age, height, weight;
     public String emergencyTel;
     public boolean[] symptoms = new boolean[12];
-    public RadioButton r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11;
 
+
+
+    @InjectView(R.id.ysnore_check) RadioButton r0;
+    @InjectView(R.id.nsnore_check) RadioButton r1;
+    @InjectView(R.id.yblood_check) RadioButton r2;
+    @InjectView(R.id.nblood_check) RadioButton r3;
+    @InjectView(R.id.yattention_check) RadioButton r4;
+    @InjectView(R.id.nattention_check) RadioButton r5;
+    @InjectView(R.id.ysleep_check) RadioButton r6;
+    @InjectView(R.id.nsleep_check) RadioButton r7;
+    @InjectView(R.id.yheart_check) RadioButton r8;
+    @InjectView(R.id.nheart_check) RadioButton r9;
+    @InjectView(R.id.ytesty_check) RadioButton r10;
+    @InjectView(R.id.ntesty_check) RadioButton r11;
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -156,10 +170,8 @@ public class UserStore {
         Connector connector = new Connector();
         if (getLogin())
             connector.updateUserInfo(email, password, String.format("{\"password\":\"%s\", \"name\":\"%s\", "
-                    + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\"," +
-                            "\"gender\":\"%d\",\"tonsil\":\"%d\"," +"\"alcohol\":\"%d\",\"smoke\":\"%d\"," +
-                            "\"hypnotic\":\"%d\",\"brain_tumor\":\"%d\",\"family_history\":\"%d\" "
-                    + "\"lifestyles\":[%f,%f,%f,%f,%f], \"score\":%d, \"scoreDetail\":[%d,%d,%d]}}",
+                            + "\"info\":{\"age\":%d, \"height\":%d, \"weight\":%d, \"phone\":\"%s\", "
+                            + "\"lifestyles\":[%f,%f,%f,%f,%f], \"score\":%d, \"scoreDetail\":[%d,%d,%d]}}",
                     password, name, age, height, weight, emergencyTel,
 
                     gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history,
@@ -212,8 +224,8 @@ public class UserStore {
 
 
 
-                    if (jsonObject.get("symptoms") != null) {
-                        JsonArray symptomsArray = jsonObject.get("symptoms").getAsJsonArray();
+                    if (jsonObject.get("lifestyles") != null) {
+                        JsonArray symptomsArray = jsonObject.get("lifestyles").getAsJsonArray();
                         for (int i = 0; i < symptomsArray.size(); ++i) {
                             symptoms[i] = symptomsArray.get(i).getAsBoolean();
 
