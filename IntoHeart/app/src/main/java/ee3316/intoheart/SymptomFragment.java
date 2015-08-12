@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.InjectViews;
+import butterknife.OnClick;
 import ee3316.intoheart.Data.UserStore;
 import ee3316.intoheart.HTTP.JCallback;
 import ee3316.intoheart.HTTP.Outcome;
@@ -38,22 +39,7 @@ public class SymptomFragment extends Fragment {
 
     }
 
-    final String KEY_SAVED_RADIO_BUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
 
-    @InjectViews({
-            R.id.ysnore_check,
-            R.id.nsnore_check,
-            R.id.yblood_check,
-            R.id.nblood_check,
-            R.id.yattention_check,
-            R.id.nattention_check,
-            R.id.ysleep_check,
-            R.id.nsleep_check,
-            R.id.yheart_check,
-            R.id.nheart_check,
-            R.id.ytesty_check,
-            R.id.ntesty_check
-            })RadioButton[] radioButtons;
     @InjectViews({
             R.id.snoring,
             R.id.highblood,
@@ -64,128 +50,48 @@ public class SymptomFragment extends Fragment {
             })RadioGroup[] radioGroups;
 
 
-    @InjectView(R.id.ysnore_check) RadioButton r0;
-    @InjectView(R.id.nsnore_check) RadioButton r1;
-    @InjectView(R.id.yblood_check) RadioButton r2;
-    @InjectView(R.id.nblood_check) RadioButton r3;
-    @InjectView(R.id.yattention_check) RadioButton r4;
-    @InjectView(R.id.nattention_check) RadioButton r5;
-    @InjectView(R.id.ysleep_check) RadioButton r6;
-    @InjectView(R.id.nsleep_check) RadioButton r7;
-    @InjectView(R.id.yheart_check) RadioButton r8;
-    @InjectView(R.id.nheart_check) RadioButton r9;
-    @InjectView(R.id.ytesty_check) RadioButton r10;
-    @InjectView(R.id.ntesty_check) RadioButton r11;
 
 
 
-  /*  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
         setHasOptionsMenu(true);
+        ButterKnife.inject(this, rootView);
+
+
+        RadioGroup.OnCheckedChangeListener onCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int buttonIndex = group.indexOfChild(group.findViewById(checkedId));
+                int groupIndex = 0;
+                for (int i = 0; i < radioGroups.length; ++i) {
+                    if (radioGroups[i] == group) groupIndex = i;
+                }
+                System.out.printf("button %d:%d clicked\n", groupIndex, buttonIndex);
+                userStore.symptoms[groupIndex] = buttonIndex;
+            }
+        };
+
+        for (RadioGroup radioGroup: radioGroups) {
+            radioGroup.setOnCheckedChangeListener(onCheckedChangeListener);
+        }
         {
             userStore = new UserStore(getActivity());
 
-          //  updateContent();
+            updateContent();
 
             return rootView;
         }
-       ButterKnife.inject(this, rootView);
-
-        fetchSymptom = new JCallback<Outcome>() {
-            @Override
-            public void call(Outcome outcome) {
-                userStore.fetch();
-                for (int i = 0; i < 12; ++i)
-                    radioButtons[i].setChecked(userStore.symptoms[i]);
-
-            }
-        };
-        updateSymptom = new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                for(int i=0;i<6;++i) {
-                    RadioButton checkedRadioButton = (RadioButton) radioGroups[i].findViewById(checkedId);
-
-                }
-
-                userStore.fetch();
-                for (int i = 0; i < 12; ++i) {
-
-                    userStore.symptoms[i] = radioButtons[i].isChecked();
-                }
-                userStore.save();
-            }
-        };
-        userStore = new UserStore(getActivity());
-        fetchSymptom.call(null);
-
-        for (int i = 0; i < 6; ++i)
-            radioGroups[i].setOnCheckedChangeListener(updateSymptom);
-        return rootView;
     }
-
-
-
-    public JCallback<Outcome> fetchSymptom;
-    public RadioGroup.OnCheckedChangeListener updateSymptom;
-
-/*
-    private void updateContent() {
-        for(int i=0; i<12;i++){
-            if(userStore)
+    private void updateContent(){
+        for (int i = 0; i < radioGroups.length; ++i) {
+            if (userStore.symptoms[i] < 0) continue;
+            RadioButton radioButton = (RadioButton)radioGroups[i].getChildAt(userStore.symptoms[i]);
+            radioButton.setChecked(true);
         }
-
-        if (userStore.getGender() != null)
-            genderEdit=(RadioGroup)genderEdit.findViewById(userStore.getGender());
-
-        if (userStore.getTonsil() != null)
-            tonsilEdit=(RadioGroup)tonsilEdit.findViewById(userStore.getTonsil());
-        if (userStore.getAlcohol() != null)
-            alcoholEdit=(RadioGroup)alcoholEdit.findViewById(userStore.getAlcohol());
-
-        if (userStore.getSmoke() != null)
-            smokeEdit=(RadioGroup)smokeEdit.findViewById(userStore.getSmoke());
-
-        if (userStore.getHypnotic() != null)
-            sedativeEdit=(RadioGroup)sedativeEdit.findViewById(userStore.getHypnotic());
-
-        if (userStore.getBrain() != null)
-            brainEdit=(RadioGroup)brainEdit.findViewById(userStore.getBrain());
-
-        if (userStore.getFamily() != null)
-            familyEdit=(RadioGroup)familyEdit.findViewById(userStore.getFamily());
-
-
     }
-*/
-
-
-   public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState) {
-       View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
-       setHasOptionsMenu(true);
-       ButterKnife.inject(this, rootView);
-       userStore = new UserStore(getActivity());
-       for(int i=0;i<6;i++) {
-           radioGroups[i].setOnCheckedChangeListener(radioGroupOnCheckedChangeListener);
-
-       }
-
-       return rootView;
-   }
-    RadioGroup.OnCheckedChangeListener radioGroupOnCheckedChangeListener =
-            new RadioGroup.OnCheckedChangeListener(){
-
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    for(int i=0;i<6;i++) {
-                        RadioButton checkedRadioButton = (RadioButton) radioGroups[i].findViewById(checkedId);
-                        int checkedIndex = radioGroups[i].indexOfChild(checkedRadioButton);
-
-
-                    }
-                }};
 
     @Override
     public void onAttach(Activity activity) {
@@ -193,7 +99,17 @@ public class SymptomFragment extends Fragment {
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
+    @OnClick(R.id.save_button_symptom)
+    public void save(){
+        userStore.snore=Integer.valueOf(radioGroups[0].getCheckedRadioButtonId());
+        userStore.blood=Integer.valueOf(radioGroups[1].getCheckedRadioButtonId());
+        userStore.inattention=Integer.valueOf(radioGroups[2].getCheckedRadioButtonId());
+        userStore.sleepiness=Integer.valueOf(radioGroups[3].getCheckedRadioButtonId());
+        userStore.heart_disease=Integer.valueOf(radioGroups[4].getCheckedRadioButtonId());
+        userStore.emotional_lability=Integer.valueOf(radioGroups[5].getCheckedRadioButtonId());
 
+        userStore.save();
+    }
 
     @Override
     public void onPause() {

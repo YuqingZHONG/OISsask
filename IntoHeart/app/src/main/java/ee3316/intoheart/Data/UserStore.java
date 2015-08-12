@@ -2,22 +2,20 @@ package ee3316.intoheart.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.RadioGroup;
+
 import android.widget.Toast;
 import android.widget.RadioButton;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import butterknife.InjectView;
-import butterknife.InjectViews;
-import ee3316.intoheart.HTTP.JCallback;
+
 import ee3316.intoheart.HTTP.Outcome;
 import ee3316.intoheart.MainActivity;
 import ee3316.intoheart.R;
 
 
 public class UserStore {
-    private final String PREFERENCE = "into_heart";
+    private final String PREFERENCE = "apnea_out";
     private final String PREFS_NAME_NAME = "user_name";
     private final String PREFS_NAME_AGE = "user_age";
     private final String PREFS_NAME_HEIGHT = "user_height";
@@ -25,18 +23,12 @@ public class UserStore {
     private final String PREFS_NAME_EMERGENCY_TEL = "user_emergency_tel";
     private final String PREFS_NAME_EMAIL = "user_email";
     private final String PREFS_NAME_PASSWORD = "user_password";
-    private final String PREFS_NAME_SNORING_Y = "user_snoring_yes";
-    private final String PREFS_NAME_SNORING_N = "user_snoring_no";
-    private final String PREFS_NAME_HIGH_BLOOD_PRESSURE_Y = "user_high_blood_pressure_yes";
-    private final String PREFS_NAME_HIGH_BLOOD_PRESSURE_N = "user_high_blood_pressure_no";
-    private final String PREFS_NAME_INATTENTION_Y = "user_inattention_yes";
-    private final String PREFS_NAME_INATTENTION_N = "user_inattention_no";
-    private final String PREFS_NAME_SLEEPINESS_Y = "user_sleepiness_yes";
-    private final String PREFS_NAME_SLEEPINESS_N = "user_sleepiness_no";
-    private final String PREFS_NAME_HEART_DISEASE_Y = "user_heart_disease_yes";
-    private final String PREFS_NAME_HEART_DISEASE_N = "user_heart_disease_no";
-    private final String PREFS_NAME_EMOTIONAL_LABILITY_Y = "user_emotional_lability_yes";
-    private final String PREFS_NAME_EMOTIONAL_LABILITY_N= "user_emotional_lability_no";
+    private final String PREFS_NAME_SNORING = "user_snoring";
+    private final String PREFS_NAME_HIGH_BLOOD_PRESSURE = "user_high_blood_pressure";
+    private final String PREFS_NAME_INATTENTION = "user_inattention";
+    private final String PREFS_NAME_SLEEPINESS = "user_sleepiness";
+    private final String PREFS_NAME_HEART_DISEASE = "user_heart_disease";
+    private final String PREFS_NAME_EMOTIONAL_LABILITY = "user_emotional_lability";
     private final String PREFS_NAME_MARK_0 = "mark_0";
     private final String PREFS_NAME_MARK_1 = "mark_1";
     private final String PREFS_NAME_MARK_2 = "mark_2";
@@ -52,14 +44,15 @@ public class UserStore {
 
     public SharedPreferences settings;
     public int mark1=0;
-
+    public int mark2=0;
     private Context context;
     public String name, email, password;
     public int gender,tonsil,alcohol,smoke,hypnotic,brain_tumor,family_history;
     public int age, height, weight;
+    public int snore,blood,inattention,sleepiness,heart_disease,emotional_lability;
     public String emergencyTel;
     public int[] pathogenesis=new int [7];
-    public int[] symptoms = new int[12];
+    public int[] symptoms = new int[6];
 
 
     public MarkingManager markingManager = new MarkingManager();
@@ -86,18 +79,12 @@ public class UserStore {
         age = settings.getInt(PREFS_NAME_AGE, -1);
         height = settings.getInt(PREFS_NAME_HEIGHT, -1);
         weight = settings.getInt(PREFS_NAME_WEIGHT, -1);
-       /* symptoms[0] = settings.getInt(PREFS_NAME_SNORING_Y, -1);
-        symptoms[1] = settings.getInt(PREFS_NAME_SNORING_N, -1);
-        symptoms[2] = settings.getInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, -1);
-        symptoms[3] = settings.getInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, -1);
-        symptoms[4] = settings.getInt(PREFS_NAME_INATTENTION_Y, -1);
-        symptoms[5] = settings.getInt(PREFS_NAME_INATTENTION_N, -1);
-        symptoms[6] = settings.getInt(PREFS_NAME_SLEEPINESS_Y, -1);
-        symptoms[7] = settings.getInt(PREFS_NAME_SLEEPINESS_N, -1);
-        symptoms[8] = settings.getInt(PREFS_NAME_HEART_DISEASE_Y, -1);
-        symptoms[9] = settings.getInt(PREFS_NAME_HEART_DISEASE_N, -1);
-        symptoms[10] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_Y, -1);
-        symptoms[11] = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY_N, -1);*/
+        snore = settings.getInt(PREFS_NAME_SNORING, -1);
+        blood = settings.getInt(PREFS_NAME_HIGH_BLOOD_PRESSURE, -1);
+        inattention = settings.getInt(PREFS_NAME_INATTENTION, -1);
+        sleepiness = settings.getInt(PREFS_NAME_SLEEPINESS, -1);
+        heart_disease = settings.getInt(PREFS_NAME_HEART_DISEASE, -1);
+        emotional_lability = settings.getInt(PREFS_NAME_EMOTIONAL_LABILITY, -1);
         markingManager.mark[0] = settings.getInt(PREFS_NAME_MARK_0, 0);
         markingManager.mark[1] = settings.getInt(PREFS_NAME_MARK_1, 0);
         markingManager.mark[2] = settings.getInt(PREFS_NAME_MARK_2, 0);
@@ -107,7 +94,8 @@ public class UserStore {
         }
 
 
-    }final String[] radioGroupStrings = new String[] {
+    }
+    final String[] radioGroupStrings = new String[] {
             PREFS_NAME_SEX,
             PREFS_NAME_ENLARGED_TONSIL,
             PREFS_NAME_ALCOHOLISM,
@@ -115,6 +103,14 @@ public class UserStore {
             PREFS_NAME_TAKE_HYPNOTIC,
             PREFS_NAME_BRAIN_TUMOR,
             PREFS_NAME_FAMILY_HISTORY
+    };
+    final String[] radioGroupStringsSymptoms = new String[] {
+            PREFS_NAME_SNORING,
+            PREFS_NAME_HIGH_BLOOD_PRESSURE,
+            PREFS_NAME_INATTENTION,
+            PREFS_NAME_SLEEPINESS,
+            PREFS_NAME_HEART_DISEASE,
+            PREFS_NAME_EMOTIONAL_LABILITY
     };
 
 
@@ -133,23 +129,11 @@ public class UserStore {
         for (int i = 0; i < radioGroupStrings.length; ++i) {
             editor.putInt(radioGroupStrings[i], pathogenesis[i]);
         }
+        for (int i = 0; i < radioGroupStringsSymptoms.length; ++i){
+            editor.putInt(radioGroupStringsSymptoms[i],symptoms[i]);
+        }
 
 
-       /* editor.putInt(PREFS_NAME_SNORING_Y, symptoms[0]);
-        editor.putInt(PREFS_NAME_SNORING_N, symptoms[1]);
-        editor.putInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_Y, symptoms[2]);
-        editor.putInt(PREFS_NAME_HIGH_BLOOD_PRESSURE_N, symptoms[3]);
-        editor.putInt(PREFS_NAME_INATTENTION_Y, symptoms[4]);
-        editor.putInt(PREFS_NAME_INATTENTION_N, symptoms[5]);
-        editor.putInt(PREFS_NAME_SLEEPINESS_Y, symptoms[6]);
-        editor.putInt(PREFS_NAME_SLEEPINESS_N, symptoms[7]);
-        editor.putInt(PREFS_NAME_HEART_DISEASE_Y, symptoms[8]);
-        editor.putInt(PREFS_NAME_HEART_DISEASE_N,symptoms[9]);
-        editor.putInt(PREFS_NAME_EMOTIONAL_LABILITY_Y, symptoms[10]);
-        editor.putInt(PREFS_NAME_EMOTIONAL_LABILITY_N, symptoms[11]);
-        editor.putInt(PREFS_NAME_MARK_0, markingManager.mark[0]);
-        editor.putInt(PREFS_NAME_MARK_1, markingManager.mark[1]);
-        editor.putInt(PREFS_NAME_MARK_2, markingManager.mark[2]);*/
 
         editor.commit();
     }
@@ -171,6 +155,7 @@ public class UserStore {
     public int getFinalMark(){
         float bmi=(float)weight/(((float)height/100)*((float)height/100));
         mark1=markingManager.getPathogenesisMark(pathogenesis,age,(int)bmi);
-        return (int)(markingManager.mark[0]*0.6+mark1*0.16+markingManager.getSymptomMark()*0.24);
+        mark2=markingManager.getSymptomMark(symptoms);
+        return (int)(markingManager.mark[0]*0.6+mark1*0.16+mark2*0.24);
     }
 }

@@ -5,9 +5,7 @@ import java.util.Map;
 
 import ee3316.intoheart.MainActivity;
 
-/**
- * Created by aahung on 4/12/15.
- */
+
 public class MarkingManager {
     public Map<Integer, int[]> targetHRs = new HashMap<>();
 
@@ -44,22 +42,7 @@ public class MarkingManager {
     }
 
 
-    public void evaluateSymptom(boolean[] symptom) {
-        int s0 = 0, s1 = 0, s2 = 0, s3 = 0, s4 = 0, s5 = 0;
-        if (symptom[0] == true)
-            s0 = 15;
-        if (symptom[2] == true)
-            s1 = 15;
-        if (symptom[4] == true)
-            s2 = 10;
-        if (symptom[6] == true)
-            s3 = 10;
-        if (symptom[8] == true)
-            s4 = 10;
-        if (symptom[10] == true)
-            s5 = 10;
-        mark[2] = s0 + s1 + s2 + s3 + s4 + s5;
-    }
+
 
     public int getPathogenesisMark(int[] mark1, int age, int bmi){
         mark[1]=0;
@@ -75,9 +58,9 @@ public class MarkingManager {
         }
 
         if(age>=40)
-            mark[1]+=10;
+            mark[1]-=10;
         if(bmi>=25)
-            mark[1]+=10;
+            mark[1]-=10;
 
         return mark[1];
     }
@@ -86,7 +69,22 @@ public class MarkingManager {
         return (int) mark[0];
     }
 
-    public int getSymptomMark(){
-        return (int) mark[2];
+    public int getSymptomMark(int[] mark2){
+        mark[2] = 0;
+        for(int i = 0;i < mark2.length;i++){
+            if(i == 0){
+                if(mark2[i] == 1)
+                    mark[2] += 40;
+            }
+            if(i == 1){
+                if(mark2[i] == 1)
+                    mark[2] += 20;
+            }
+            else{
+                if(mark2[i] == 1)
+                    mark[2] +=10;
+            }
+        }
+        return  mark[2];
     }
 }
